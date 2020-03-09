@@ -4,14 +4,10 @@
       Find a sub
     </h2>
 
-    <form action="/select_competition_level" method="post">
-      <div class="form-group">
-        <label for="sender_id_box"></label>
-        <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value=<%@user.id%>>
-      </div>
+    <form action="/create_sub_request" method="post">
 
       <div class="form-group">
-        <label for="league_level_box">League level</label>
+        <label for="league_level_box">What's the competition level?</label>
         <select type="dropdown" id="league_level_box" name="query_league_level" class="form-control">
           <option disabled selected value> -- select an option -- </option>
           <option value="competitive">Competitive</option>

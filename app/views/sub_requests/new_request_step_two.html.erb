@@ -11,7 +11,7 @@
       </div>
 
       <div class="form-group">
-        <label for="league_environment_box">League environment</label>
+        <label for="league_environment_box">What's the environment?</label>
         <select type="dropdown" id="league_environment_box" name="query_league_environment" class="form-control">
           <option disabled selected value> -- select an option -- </option>
           <option value="indoor">Indoor</option>
@@ -21,7 +21,7 @@
       </div>
 
       <div class="form-group">
-        <label for="league_format_box">League format</label>
+        <label for="league_format_box">What's the format?</label>
         <select type="dropdown" id="league_format_box" name="query_league_format" class="form-control">
           <option disabled selected value> -- select an option -- </option>
           <option value="sixes">6s</option>
@@ -32,50 +32,18 @@
       </div>
 
       <div class="form-group">
-        <label for="league_gender_box">League gender</label>
+        <label for="league_gender_box">Coed, Womens, or Mens?</label>
         <select type="dropdown" id="league_gender_box" name="query_league_gender" class="form-control">
           <option disabled selected value> -- select an option -- </option>
+          <option value="coed">Coed</option>
           <option value="womens">Womens</option>
           <option value="mens">Mens</option>
-          <option value="coed">Coed</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="league_level_box">League level</label>
-        <select type="dropdown" id="league_level_box" name="query_league_level" class="form-control">
-          <option disabled selected value> -- select an option -- </option>
-          <option value="competitive">Competitive</option>
-          <option value="upper_intermediate">Upper Intermediate</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="recreational">Recreational</option>
-        </select>
-      </div>
-
-      <div>
-       <table border="1">
-          <tr>
-            <td>Competitve</td>
-            <td>For players competing at the top non-professional levels. Can select AA, A, BB, B.</td>
-          </tr>
-          <tr>
-            <td>Upper Intermediate</td>
-            <td>For players with developed skills.</td>
-          </tr>
-          <tr>
-            <td>Intermediate</td>
-            <td>For players building their skills and looking for some competition.</td>
-          </tr>
-          <tr>
-            <td>Recreational</td>
-            <td>For players looking to learn the sport or playing for fun.</td>
-          </tr>
-       </table>
-       </div>
-
-     <%if query_league_level == "competitive"%>
+     <%if @competition_level == "competitive"%>
         <div class="form-group">
-          <label for="competition_level_box">Competition level</label>
+          <label for="competition_level_box">What's the level of play? (Optional)</label>
           <select type="dropdown" id="competition_level_box" name="query_competition_level" class="form-control">
             <option></option>
             <option value="aa">AA</option>
@@ -86,13 +54,13 @@
         </div>
       <%end%>
 
-      <%if query_league_level == "recreational"%>
+      <%if @competition_level == "recreational"%>
         <input type="hidden" id="position_box" name="query_position" class="form-control" value="player">
       <%else%>
         <div class="form-group">
-          <label for="position_box">Position</label>
+          <label for="position_box">What position are you looking for?</label>
           <select type="dropdown" id="position_box" name="query_position" class="form-control">
-            <%if query_league_level == "intermediate"%>
+            <%if @competition_level == "intermediate"%>
               <option value="player">Any player</option>
               <option value="setter">Setter</option>
             <%else%>
@@ -108,12 +76,12 @@
 
 
       <div class="form-group">
-        <label for="game_location_box">Game location</label>
+        <label for="game_location_box">Where are you playing?</label>
         <textarea id="game_location_box" name="query_game_location" class="form-control" rows="3"></textarea>
       </div>
 
       <div class="form-group">
-        <label for="game_datetime_box">Game datetime</label>
+        <label for="game_datetime_box">When's the game?</label>
         <input type="datetime-local" id="game_datetime_box" name="query_game_datetime" class="form-control">
       </div>
 

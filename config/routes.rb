@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   # Routes for the Sub request resource:
 
   # CREATE
-  post("/create_sub_request", { :controller => "sub_requests", :action => "create" })
+  post("/new_sub_request", { :controller => "sub_requests", :action => "create" })
+  post("/create_sub_request", { :controller => "sub_requests", :action => "step_two" })
           
   # READ
   get("/sub_requests", { :controller => "sub_requests", :action => "index" })

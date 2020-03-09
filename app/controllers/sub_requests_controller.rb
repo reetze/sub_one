@@ -1,5 +1,12 @@
 class SubRequestsController < ApplicationController
   
+  def step_two
+    @competition_level = params.fetch("query_league_level")
+    @user = User.where({ :id => session.fetch(:user_id)}).at(0)
+
+    render({ :template => "sub_requests/new_request_step_two.html.erb" })
+  end
+
   def new_request
     @user = User.where({ :id => session.fetch(:user_id)}).at(0)
     

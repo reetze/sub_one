@@ -1,0 +1,192 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Sub request #<%= @sub_request.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/sub_requests" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_sub_request/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary">
+          Delete sub request
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Sender
+      </dt>
+      <dd>
+        <%= @sub_request.sender_id %>
+      </dd>
+
+      <dt>
+        League environment
+      </dt>
+      <dd>
+        <%= @sub_request.league_environment %>
+      </dd>
+
+      <dt>
+        League format
+      </dt>
+      <dd>
+        <%= @sub_request.league_format %>
+      </dd>
+
+      <dt>
+        League gender
+      </dt>
+      <dd>
+        <%= @sub_request.league_gender %>
+      </dd>
+
+      <dt>
+        League level
+      </dt>
+      <dd>
+        <%= @sub_request.league_level %>
+      </dd>
+
+      <dt>
+        Competition level
+      </dt>
+      <dd>
+        <%= @sub_request.competition_level %>
+      </dd>
+
+      <dt>
+        Position
+      </dt>
+      <dd>
+        <%= @sub_request.position %>
+      </dd>
+
+      <dt>
+        Game location
+      </dt>
+      <dd>
+        <%= @sub_request.game_location %>
+      </dd>
+
+      <dt>
+        Game datetime
+      </dt>
+      <dd>
+        <%= @sub_request.game_datetime %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@sub_request.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@sub_request.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit sub request
+    </h2>
+
+    <form action="/modify_sub_request/<%= @sub_request.id %>"  method="post" >
+      <div class="form-group">
+        <label for="sender_id_box">
+          Sender
+        </label>
+
+        <input type="text" id="sender_id_box" name="query_sender_id" class="form-control" value="<%= @sub_request.sender_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="league_environment_box">
+          League environment
+        </label>
+
+        <input type="text" id="league_environment_box" name="query_league_environment" class="form-control" value="<%= @sub_request.league_environment %>">
+      </div>
+
+      <div class="form-group">
+        <label for="league_format_box">
+          League format
+        </label>
+
+        <input type="text" id="league_format_box" name="query_league_format" class="form-control" value="<%= @sub_request.league_format %>">
+      </div>
+
+      <div class="form-group">
+        <label for="league_gender_box">
+          League gender
+        </label>
+
+        <input type="text" id="league_gender_box" name="query_league_gender" class="form-control" value="<%= @sub_request.league_gender %>">
+      </div>
+
+      <div class="form-group">
+        <label for="league_level_box">
+          League level
+        </label>
+
+        <input type="text" id="league_level_box" name="query_league_level" class="form-control" value="<%= @sub_request.league_level %>">
+      </div>
+
+      <div class="form-group">
+        <label for="competition_level_box">
+          Competition level
+        </label>
+
+        <input type="text" id="competition_level_box" name="query_competition_level" class="form-control" value="<%= @sub_request.competition_level %>">
+      </div>
+
+      <div class="form-group">
+        <label for="position_box">
+          Position
+        </label>
+
+        <input type="text" id="position_box" name="query_position" class="form-control" value="<%= @sub_request.position %>">
+      </div>
+
+      <div class="form-group">
+        <label for="game_location_box">
+          Game location
+        </label>
+
+        <textarea id="game_location_box" name="query_game_location" class="form-control" rows="3"><%= @sub_request.game_location %></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="game_datetime_box">
+          Game datetime
+        </label>
+
+        <input type="datetime-local" id="game_datetime_box" name="query_game_datetime"
+          class="form-control" value="<%= @sub_request.game_datetime %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update sub request
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

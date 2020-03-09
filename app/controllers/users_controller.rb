@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-  # skip_before_action(:force_user_sign_in, { :only => [:new_registration_form, :create] })
+  skip_before_action(:force_user_sign_in, { :only => [:new_registration_form, :create] })
   
+  def profile_form
+    render({ :template => "users/profile.html.erb" })
+  end
+
   def new_registration_form
     render({ :template => "user_sessions/sign_up.html.erb" })
   end
@@ -51,5 +55,6 @@ class UsersController < ApplicationController
     
     redirect_to("/", { :notice => "User account cancelled" })
   end
+
   
 end

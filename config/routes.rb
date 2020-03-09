@@ -2,6 +2,25 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Sub request resource:
+
+  # CREATE
+  post("/insert_sub_request", { :controller => "sub_requests", :action => "create" })
+          
+  # READ
+  get("/sub_requests", { :controller => "sub_requests", :action => "index" })
+  
+  get("/sub_requests/:path_id", { :controller => "sub_requests", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_sub_request/:path_id", { :controller => "sub_requests", :action => "update" })
+  
+  # DELETE
+  get("/delete_sub_request/:path_id", { :controller => "sub_requests", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the User account:
 
   # SIGN UP FORM
@@ -13,6 +32,8 @@ Rails.application.routes.draw do
   get("/edit_user_profile", { :controller => "users", :action => "edit_registration_form" })       
   # UPDATE RECORD
   post("/modify_user", { :controller => "users", :action => "update" })
+  # user profile
+  get("/profile", { :controller => "users", :action => "profile_form" })     
   
   # DELETE RECORD
   get("/cancel_user_account", { :controller => "users", :action => "destroy" })

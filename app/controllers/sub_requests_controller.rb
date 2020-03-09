@@ -1,4 +1,11 @@
 class SubRequestsController < ApplicationController
+  
+  def new_request
+    @user = User.where({ :id => session.fetch(:user_id)}).at(0)
+    
+    render({ :template => "sub_requests/new_request.html.erb" })
+  end
+  
   def index
     @sub_requests = SubRequest.all.order({ :created_at => :desc })
 

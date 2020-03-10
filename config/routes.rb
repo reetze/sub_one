@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   # Routes for the Sub request resource:
 
   # CREATE
-  post("/new_sub_request", { :controller => "sub_requests", :action => "create" })
+  post("/insert_sub_request", { :controller => "sub_requests", :action => "create" })
   post("/create_sub_request", { :controller => "sub_requests", :action => "step_two" })
           
   # READ
   get("/sub_requests", { :controller => "sub_requests", :action => "index" })
-  get("/new_sub_request", { :controller => "sub_requests", :action => "new_request" })
+  get("/new_sub_request", { :controller => "sub_requests", :action => "new_request_form" })
   
   get("/sub_requests/:path_id", { :controller => "sub_requests", :action => "show" })
   

@@ -3,106 +3,32 @@
   <div class="col-md-12">
     <table class="table">
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          Sender
-        </th>
-
-        <th>
-          League environment
-        </th>
-
-        <th>
-          League format
-        </th>
-
-        <th>
-          League gender
-        </th>
-
-        <th>
-          League level
-        </th>
-
-        <th>
-          Competition level
-        </th>
-
-        <th>
-          Position
-        </th>
-
-        <th>
-          Game location
-        </th>
-
-        <th>
-          Game datetime
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
+        
+        <th>Environment</th>
+        <th>Format</th>
+        <th>Gender</th>
+        <th>Level</th>
+        <th></th>
+        <th>Position</th>
+        <th>Location</th>
+        <th>Game time</th>
+        <th>Sender</th>
         <th>
         </th>
       </tr>
 
       <% @sub_requests.each do |sub_request| %>
       <tr>
-        <td>
-          <%= sub_request.id %>
-        </td>
-
-        <td>
-          <%= sub_request.sender_id %>
-        </td>
-
-        <td>
-          <%= sub_request.league_environment %>
-        </td>
-
-        <td>
-          <%= sub_request.league_format %>
-        </td>
-
-        <td>
-          <%= sub_request.league_gender %>
-        </td>
-
-        <td>
-          <%= sub_request.league_level %>
-        </td>
-
-        <td>
-          <%= sub_request.competition_level %>
-        </td>
-
-        <td>
-          <%= sub_request.position %>
-        </td>
-
-        <td>
-          <%= sub_request.game_location %>
-        </td>
-
-        <td>
-          <%= sub_request.game_datetime %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(sub_request.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(sub_request.updated_at) %> ago
-        </td>
+        
+        <td><%= sub_request.league_environment.capitalize %></td>
+        <td><%= sub_request.league_format.capitalize %></td>
+        <td><%= sub_request.league_gender.capitalize %></td>
+        <td><%= sub_request.league_level.capitalize %></td>
+        <td><%= sub_request.competition_level.upcase %></td>
+        <td><%= sub_request.position.capitalize %></td>
+        <td><%= sub_request.game_location %></td>
+        <td><%= sub_request.game_datetime %></td>
+        <td><%= sub_request.sender_id %></td>
 
         <td>
           <a href="/sub_requests/<%= sub_request.id %>">

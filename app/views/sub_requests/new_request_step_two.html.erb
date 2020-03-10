@@ -41,6 +41,11 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label for="sender_id_box"></label>
+        <input type="hidden" id="league_level_box" name="query_league_level" class="form-control" value= <%@competition_level%>>
+      </div>
+
      <%if @competition_level == "competitive"%>
         <div class="form-group">
           <label for="competition_level_box">What's the level of play? (Optional)</label>

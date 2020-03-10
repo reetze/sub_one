@@ -1,13 +1,13 @@
 class SubRequestsController < ApplicationController
   
   def step_two
-    @competition_level = params.fetch("query_league_level")
+    @competition_level = params.fetch("the_league_level")
     @user = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     render({ :template => "sub_requests/new_request_step_two.html.erb" })
   end
 
-  def new_request
+  def new_request_form
     @user = User.where({ :id => session.fetch(:user_id)}).at(0)
     
     render({ :template => "sub_requests/new_request.html.erb" })
@@ -32,7 +32,7 @@ class SubRequestsController < ApplicationController
     @sub_request.league_environment = params.fetch("query_league_environment")
     @sub_request.league_format = params.fetch("query_league_format")
     @sub_request.league_gender = params.fetch("query_league_gender")
-    @sub_request.league_level = params.fetch("query_league_level")
+    @sub_request.league_level = params.fetch("query_league_level") 
     @sub_request.competition_level = params.fetch("query_competition_level")
     @sub_request.position = params.fetch("query_position")
     @sub_request.game_location = params.fetch("query_game_location")

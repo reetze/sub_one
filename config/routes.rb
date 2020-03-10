@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post("/create_sub_request", { :controller => "sub_requests", :action => "step_two" })
           
   # READ
+  get("/", { :controller => "sub_requests", :action => "index" })
   get("/sub_requests", { :controller => "sub_requests", :action => "index" })
   get("/new_sub_request", { :controller => "sub_requests", :action => "new_request_form" })
   

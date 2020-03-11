@@ -7,7 +7,7 @@
     <form action="/insert_sub_request" method="post">
       <div class="form-group">
         <label for="sender_id_box"></label>
-        <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value=<%@user.id%>>
+        <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value= session.fetch(:user_id)>
       </div>
 
       <div class="form-group">

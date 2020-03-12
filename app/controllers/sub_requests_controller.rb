@@ -32,7 +32,7 @@ class SubRequestsController < ApplicationController
     @sub_request.league_environment = params.fetch("query_league_environment")
     @sub_request.league_format = params.fetch("query_league_format")
     @sub_request.league_gender = params.fetch("query_league_gender")
-    @sub_request.league_level = @competition_level
+    @sub_request.league_level = params.fetch("query_league_level")
     @sub_request.competition_level = params.fetch("query_competition_level", "")
     @sub_request.position = params.fetch("query_position", "")
     @sub_request.game_location = params.fetch("query_game_location")
@@ -49,14 +49,13 @@ class SubRequestsController < ApplicationController
   def update
     the_id = params.fetch("path_id")
     @sub_request = SubRequest.where({ :id => the_id }).at(0)
-
     @sub_request.sender_id = params.fetch("query_sender_id")
     @sub_request.league_environment = params.fetch("query_league_environment")
     @sub_request.league_format = params.fetch("query_league_format")
     @sub_request.league_gender = params.fetch("query_league_gender")
-    @sub_request.league_level = @competition_level
-    @sub_request.competition_level = params.fetch("query_competition_level")
-    @sub_request.position = params.fetch("query_position")
+    @sub_request.league_level = params.fetch("query_league_level")
+    @sub_request.competition_level = params.fetch("query_competition_level", "")
+    @sub_request.position = params.fetch("query_position", "")
     @sub_request.game_location = params.fetch("query_game_location")
     @sub_request.game_datetime = params.fetch("query_game_datetime")
 

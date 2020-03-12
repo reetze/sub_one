@@ -2,6 +2,7 @@ class SubRequestsController < ApplicationController
   
   def step_two
     @competition_level = params.fetch("the_league_level")
+    @league_gender = params.fetch("query_league_gender")
     @user = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     render({ :template => "sub_requests/new_request_step_two.html.erb" })
@@ -37,6 +38,8 @@ class SubRequestsController < ApplicationController
     @sub_request.position = params.fetch("query_position", "")
     @sub_request.game_location = params.fetch("query_game_location")
     @sub_request.game_datetime = params.fetch("query_game_datetime")
+    @sub_request.game_datetime = params.fetch("query_game_datetime")
+    @sub_request.player_gender = params.fetch("query_player_gender", "")
 
     if @sub_request.valid?
       @sub_request.save

@@ -9,6 +9,7 @@
         <th>Gender</th>
         <th>Level</th>
         <th></th>
+        <th>Coed player</th>
         <th>Position</th>
         <th>Location</th>
         <th>Game time</th>
@@ -28,6 +29,11 @@
           <td></td>
         <%else%>
           <td><%= sub_request.competition_level.upcase %></td>
+        <%end%>
+        <%if sub_request.league_gender == "coed" %>
+          <td><%= sub_request.player_gender.capitalize %></td>
+        <%else%>
+          <td></td>
         <%end%>
         <td><%= sub_request.position.capitalize %></td>
         <td><%= sub_request.game_location %></td>

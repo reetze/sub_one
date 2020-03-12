@@ -19,4 +19,6 @@ class User < ApplicationRecord
   validates :last_name, :presence => { :message => "You can choose to include just the first initial" }
   validates :first_name, :presence => true
 
+
+
 end

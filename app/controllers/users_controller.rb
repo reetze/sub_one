@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   skip_before_action(:force_user_sign_in, { :only => [:new_registration_form, :create] })
   
   def profile_form
+    @sub_requests = SubRequest.where({ :sender_id => session.fetch(:user_id) , :found_sub => false }).all
+
     render({ :template => "users/profile.html.erb" })
   end
 

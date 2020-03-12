@@ -7,12 +7,17 @@
     <form action="/insert_sub_request" method="post">
       <div class="form-group">
         <label for="sender_id_box"></label>
-        <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value= session.fetch(:user_id)>
+        <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value= <%=@user.id%>>
       </div>
 
       <div class="form-group">
         <label for="league_level_id_box"></label>
         <input type="hidden" id="league_level_id_box" name="query_league_level" class="form-control" value= <%=@competition_level%>>
+      </div>
+
+      <div class="form-group">
+        <label for="league_gender_id_box"></label>
+        <input type="hidden" id="league_gender_id_box" name="query_league_gender" class="form-control" value= <%=@league_gender%>>
       </div>
 
       <div class="form-group">
@@ -36,16 +41,6 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <label for="league_gender_box">Coed, Womens, or Mens?</label>
-        <select type="dropdown" id="league_gender_box" name="query_league_gender" class="form-control">
-          <option disabled selected value> -- select an option -- </option>
-          <option value="coed">Coed</option>
-          <option value="womens">Womens</option>
-          <option value="mens">Mens</option>
-        </select>
-      </div>
-
      <%if @competition_level == "competitive"%>
         <div class="form-group">
           <label for="competition_level_box">What's the level of play? (Optional)</label>
@@ -55,6 +50,16 @@
             <option value="a">A</option>
             <option value="bb">BB</option>
             <option value="b">B</option>
+          </select>
+        </div>
+      <%end%>
+
+      <%if @league_gender == "coed"%>
+        <div class="form-group">
+          <label for="player_gender_box">Do you need a female or male sub for the coed game?</label>
+          <select type="dropdown" id="player_gender_box" name="query_player_gender" class="form-control">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
           </select>
         </div>
       <%end%>

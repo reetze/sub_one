@@ -11,6 +11,7 @@
 #  league_format      :string
 #  league_gender      :string
 #  league_level       :string
+#  player_gender      :string
 #  position           :string
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

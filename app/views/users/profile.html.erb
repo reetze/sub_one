@@ -1,2 +1,56 @@
 <h2>Current playing levels</h2>
 
+<h2>Current sub requests</h2>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        
+        <th>Environment</th>
+        <th>Format</th>
+        <th>Gender</th>
+        <th>Level</th>
+        <th></th>
+        <th>Coed player</th>
+        <th>Position</th>
+        <th>Location</th>
+        <th>Game time</th>
+        <th>Sender</th>
+        <th>
+        </th>
+      </tr>
+
+      <% @sub_requests.each do |sub_request| %>
+      <tr>
+        
+        <td><%= sub_request.league_environment.capitalize %></td>
+        <td><%= sub_request.league_format.capitalize %></td>
+        <td><%= sub_request.league_gender.capitalize %></td>
+        <td><%= sub_request.league_level.capitalize %></td>
+        <%if sub_request.competition_level == "" %>
+          <td></td>
+        <%else%>
+          <td><%= sub_request.competition_level.upcase %></td>
+        <%end%>
+        <%if sub_request.league_gender == "coed" %>
+          <td><%= sub_request.player_gender.capitalize %></td>
+        <%else%>
+          <td></td>
+        <%end%>
+        <td><%= sub_request.position.capitalize %></td>
+        <td><%= sub_request.game_location %></td>
+        <td><%= sub_request.game_datetime %></td>
+        <td><%= sub_request.sender_id %></td>
+
+        <td>
+          <a href="/sub_requests/<%= sub_request.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+

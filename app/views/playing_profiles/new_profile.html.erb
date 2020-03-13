@@ -1,14 +1,3 @@
-<div class="row mb-3">
-  <div class="col-md-12">
-    <h1>
-      Your playing profiles
-    </h1>
-  </div>
-</div>
-
-
-<hr>
-
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
@@ -84,7 +73,7 @@
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="level_recreational_box" name="query_level_recreational" value="1">
-        <label class="custom-control-label" for="level_recreational_box">recreational</label>
+        <label class="custom-control-label" for="level_recreational_box">Recreational</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
@@ -102,67 +91,81 @@
         <label class="custom-control-label" for="level_competitive_box">Competitive</label>
       </div>
 
-      <h5>Competitive level</h5>
+      <div class="col-md-20 offset-md-1">
 
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="comp_level_aa_box" name="query_comp_level_aa" value="1">
-        <label class="custom-control-label" for="comp_level_aa_box">Comp level aa</label>
+        <h6>For Competitive level only (optional selection)</h6>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="comp_level_aa_box" name="query_comp_level_aa" value="1">
+          <label class="custom-control-label" for="comp_level_aa_box">AA</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="comp_level_a_box" name="query_comp_level_a" value="1">
+          <label class="custom-control-label" for="comp_level_a_box">A</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="comp_level_bb_box" name="query_comp_level_bb" value="1">
+          <label class="custom-control-label" for="comp_level_bb_box">BB</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="comp_level_b_box" name="query_comp_level_b" value="1">
+          <label class="custom-control-label" for="comp_level_b_box">B</label>
+        </div>
+
       </div>
 
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="comp_level_a_box" name="query_comp_level_a" value="1">
+      <h5>Position</h5>
 
-        <label class="custom-control-label" for="comp_level_a_box">Comp level a</label>
+      <div class="col-md-20 offset-md-1">
+
+        <h6>For Recreational level: not applicable</h6>
+
+        <h6>For Intermediate level:</h6>
+
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="position_player_box" name="query_position_player" value="1">
+            <label class="custom-control-label" for="position_player_box">Any player</label>
+          </div>
+          
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="position_setter_box" name="query_position_setter" value="1">
+            <label class="custom-control-label" for="position_setter_box">Setter</label>
+          </div>
+
+          <h6>For Upper intermediate and Competitve levels:</h6>
+
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="position_setter_box" name="query_position_setter" value="1">
+            <label class="custom-control-label" for="position_setter_box">Setter</label>
+          </div>
+
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="position_outside_hitter_box" name="query_position_outside_hitter" value="1">
+            <label class="custom-control-label" for="position_outside_hitter_box">Outside hitter</label>
+          </div>
+
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="position_rightside_hitter_box" name="query_position_rightside_hitter" value="1">
+            <label class="custom-control-label" for="position_rightside_hitter_box">Rightside hitter</label>
+          </div>
+
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="position_middle_hitter_box" name="query_position_middle_hitter" value="1">
+            <label class="custom-control-label" for="position_middle_hitter_box">Middle hitter</label>
+          </div>
+
+          <div class="custom-control custom-checkbox mb-3">
+            <input type="checkbox" class="custom-control-input" id="position_libero_box" name="query_position_libero" value="1">
+            <label class="custom-control-label" for="position_libero_box">Libero/defense</label>
+          </div>
+
+
       </div>
 
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="comp_level_bb_box" name="query_comp_level_bb" value="1">
-
-        <label class="custom-control-label" for="comp_level_bb_box">Comp level bb</label>
-      </div>
-
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="comp_level_b_box" name="query_comp_level_b" value="1">
-
-        <label class="custom-control-label" for="comp_level_b_box">Comp level b</label>
-      </div>
-
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="position_setter_box" name="query_position_setter" value="1">
-
-        <label class="custom-control-label" for="position_setter_box">Position setter</label>
-      </div>
-
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="position_outside_hitter_box" name="query_position_outside_hitter" value="1">
-
-        <label class="custom-control-label" for="position_outside_hitter_box">Position outside hitter</label>
-      </div>
-
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="position_rightside_hitter_box" name="query_position_rightside_hitter" value="1">
-
-        <label class="custom-control-label" for="position_rightside_hitter_box">Position rightside hitter</label>
-      </div>
-
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="position_middle_hitter_box" name="query_position_middle_hitter" value="1">
-
-        <label class="custom-control-label" for="position_middle_hitter_box">Position middle hitter</label>
-      </div>
-
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="position_libero_box" name="query_position_libero" value="1">
-
-        <label class="custom-control-label" for="position_libero_box">Position libero</label>
-      </div>
-
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input" id="position_player_box" name="query_position_player" value="1">
-
-        <label class="custom-control-label" for="position_player_box">Position player</label>
-      </div>
-
+      
       <button class="btn btn-block btn-outline-secondary">
         Create playing profile
       </button>

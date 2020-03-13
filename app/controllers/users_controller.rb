@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   
   def profile_form
     @sub_requests = SubRequest.where({ :sender_id => session.fetch(:user_id) , :found_sub => false }).all
+    @user = User.where({ :id => session.fetch(:user_id)}).at(0)
+    @playing_profiles = PlayingProfile.where({ :user_id => @user.id }).order({ :created_at => :desc })
 
     render({ :template => "users/profile.html.erb" })
   end

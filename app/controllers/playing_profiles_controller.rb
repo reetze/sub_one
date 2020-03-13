@@ -36,10 +36,10 @@ class PlayingProfilesController < ApplicationController
       @playing_profile.comp_level_bb = params.fetch("query_comp_level_bb", false)
       @playing_profile.comp_level_b = params.fetch("query_comp_level_b", false)
     end
-    if @playing_profile.level_competitive == true || @playing_profile.upper_intermediate == true || @playing_profile.intermediate == true
+    if @playing_profile.level_competitive == true || @playing_profile.level_upper_intermediate == true || @playing_profile.level_intermediate == true
       @playing_profile.position_setter = params.fetch("query_position_setter", false)
     end
-    if @playing_profile.level_competitive == true || @playing_profile.upper_intermediate == true
+    if @playing_profile.level_competitive == true || @playing_profile.level_upper_intermediate == true
       @playing_profile.position_outside_hitter = params.fetch("query_position_outside_hitter", false)
       @playing_profile.position_rightside_hitter = params.fetch("query_position_rightside_hitter", false)
       @playing_profile.position_middle_hitter = params.fetch("query_position_middle_hitter", false)

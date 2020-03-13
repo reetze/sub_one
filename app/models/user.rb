@@ -19,6 +19,11 @@ class User < ApplicationRecord
   validates :last_name, :presence => { :message => "You can choose to include just the first initial" }
   validates :first_name, :presence => true
 
+  def first_and_last_init
+    last = self.last_name.split("").at(0).upcase
+    first = self.first_name
 
+    return first.to_s + " " + last.to_s + "."
+  end
 
 end

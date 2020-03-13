@@ -23,6 +23,7 @@ class SubRequestsController < ApplicationController
   def show
     the_id = params.fetch("path_id")
     @sub_request = SubRequest.where({:id => the_id }).at(0)
+    @user = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     render({ :template => "sub_requests/show.html.erb" })
   end

@@ -39,7 +39,6 @@ class SubRequestsController < ApplicationController
     @sub_request.position = params.fetch("query_position", "")
     @sub_request.game_location = params.fetch("query_game_location")
     @sub_request.game_datetime = params.fetch("query_game_datetime")
-    @sub_request.game_datetime = params.fetch("query_game_datetime")
     @sub_request.player_gender = params.fetch("query_player_gender", "")
 
     if @sub_request.valid?
@@ -62,6 +61,7 @@ class SubRequestsController < ApplicationController
     @sub_request.position = params.fetch("query_position", "")
     @sub_request.game_location = params.fetch("query_game_location")
     @sub_request.game_datetime = params.fetch("query_game_datetime")
+    @sub_request.player_gender = params.fetch("query_player_gender", "")
 
     if @sub_request.valid?
       @sub_request.save

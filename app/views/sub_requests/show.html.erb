@@ -72,17 +72,17 @@
 
 <form action="/insert_sub_request" method="post">
 
-      <div class="form-group">
+      <div class="form-group" style = "display:none">
         <label for="sender_id_box"></label>
         <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value= <%=@user.id%>>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style = "display:none">
         <label for="league_level_id_box"></label>
         <input type="hidden" id="league_level_id_box" name="query_league_level" class="form-control" value= <%=@sub_request.league_level%>>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" style = "display:none">
         <label for="league_gender_id_box"></label>
         <input type="hidden" id="league_gender_id_box" name="query_league_gender" class="form-control" value= <%=@sub_request.league_gender%>>
       </div>
@@ -110,7 +110,7 @@
 
      <%if @sub_request.league_level == "competitive"%>
         <div class="form-group">
-          <label for="competition_level_box">Level </label>
+          <label for="competition_level_box">Level</label>
           <select type="dropdown" id="competition_level_box" name="query_competition_level" class="form-control">
             <option value="<%=@sub_request.competition_level%>"> <%=@sub_request.competition_level.upcase%>  (current selection)</option>
             <option></option>
@@ -124,7 +124,7 @@
 
       <%if @sub_request.league_gender == "coed"%>
         <div class="form-group">
-          <label for="player_gender_box">Do you need a female or male sub for the coed game</label>
+          <label for="player_gender_box">Coed player gender</label>
           <select type="dropdown" id="player_gender_box" name="query_player_gender" class="form-control">
             <option value="<%=@sub_request.player_gender%>"> <%=@sub_request.player_gender.capitalize%>  (current selection)</option>
             <option value="female">Female</option>
@@ -137,7 +137,7 @@
         <input type="hidden" id="position_box" name="query_position" class="form-control" value="player">
       <%else%>
         <div class="form-group">
-          <label for="position_box">What position are you looking for</label>
+          <label for="position_box">Position</label>
           <select type="dropdown" id="position_box" name="query_position" class="form-control">
             <%if @sub_request.league_level == "intermediate"%>
               <option value="<%=@sub_request.position%>"> <%=@sub_request.position.capitalize%>  (current selection)</option>
@@ -157,13 +157,13 @@
 
 
       <div class="form-group">
-        <label for="game_location_box">Where are you playing</label>
-        <textarea id="game_location_box" name="query_game_location" class="form-control" rows="3" placeholder = <%=@sub_request.game_location%>></textarea>
+        <label for="game_location_box">Game location</label>
+        <textarea id="game_location_box" name="query_game_location" class="form-control" rows="3"><%=@sub_request.game_location%></textarea>
       </div>
 
       <div class="form-group">
         <label for="game_datetime_box">When's the game</label>
-        <input type="datetime-local" id="game_datetime_box" name="query_game_datetime" class="form-control">
+        <input type="datetime-local" id="game_datetime_box" name="query_game_datetime" class="form-control" value = <%=@sub_request.game_datetime.strftime("%Y-%m-%eT%H:%M")%>>
         <p style="color: gray"><%=@sub_request.game_datetime.strftime(" %-m/%e/%y %I:%M %p")%> currently</p>
       </div>
 

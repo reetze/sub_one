@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   post("/insert_playing_profile", { :controller => "playing_profiles", :action => "create" })
           
   # READ
-  get("/playing_profiles", { :controller => "playing_profiles", :action => "index" })
-  
+  get("/playing_profiles", { :controller => "playing_profiles", :action => "profiles_form" })
   get("/playing_profiles/:path_id", { :controller => "playing_profiles", :action => "show" })
   
   # UPDATE

@@ -6,82 +6,6 @@
   </div>
 </div>
 
-<hr>
-<div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>User</th>
-        <th>Format indoor</th>
-        <th>Format grass</th>
-        <th>Format sand</th>
-        <th>Players six</th>
-        <th>Players four</th>
-        <th>Players three</th>
-        <th>Players two</th>
-        <th>League gender womens</th>
-        <th>League gender mens</th>
-        <th>League gender coed</th>
-        <th>Level recreational</th>
-        <th>Level intermediate</th>
-        <th>Level upper intermediate</th>
-        <th>Level competitive</th>
-        <th>Comp level aa</th>
-        <th>Comp level a</th>
-        <th>Comp level bb</th>
-        <th>Comp level b</th>
-        <th>Position setter</th>
-        <th>Position outside hitter</th>
-        <th>Position rightside hitter</th>
-        <th>Position middle hitter</th>
-        <th>Position libero</th>
-        <th>Position player</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-        <th></th>
-      </tr>
-
-      <% @playing_profiles.each do |playing_profile| %>
-      <tr>
-        <td><%= playing_profile.id %></td>
-        <td><%= playing_profile.user_id %></td>
-        <td><%= playing_profile.format_indoor %></td>
-        <td><%= playing_profile.format_grass %></td>
-        <td><%= playing_profile.format_sand %></td>
-        <td><%= playing_profile.players_six %></td>
-        <td><%= playing_profile.players_four %></td>
-        <td><%= playing_profile.players_three %></td>
-        <td><%= playing_profile.players_two %></td>
-        <td><%= playing_profile.league_gender_womens %></td>
-        <td><%= playing_profile.league_gender_mens %></td>
-        <td><%= playing_profile.league_gender_coed %></td>
-        <td><%= playing_profile.level_recreational %></td>
-        <td><%= playing_profile.level_intermediate %></td>
-        <td><%= playing_profile.level_upper_intermediate %></td>
-        <td><%= playing_profile.level_competitive %></td>
-        <td><%= playing_profile.comp_level_aa %></td>
-        <td><%= playing_profile.comp_level_a %></td>
-        <td><%= playing_profile.comp_level_bb %></td>
-        <td><%= playing_profile.comp_level_b %></td>
-        <td><%= playing_profile.position_setter %></td>
-        <td><%= playing_profile.position_outside_hitter %></td>
-        <td><%= playing_profile.position_rightside_hitter %></td>
-        <td><%= playing_profile.position_middle_hitter %></td>
-        <td><%= playing_profile.position_libero %></td>
-        <td><%= playing_profile.position_player %></td>
-        <td><%= time_ago_in_words(playing_profile.created_at) %> ago</td>       <td><%= time_ago_in_words(playing_profile.updated_at) %> ago</td>
-
-        <td>
-          <a href="/playing_profiles/<%= playing_profile.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
 
 <hr>
 
@@ -93,101 +17,95 @@
     </h2>
 
     <form action="/insert_playing_profile" method="post">
-      <div class="form-group">
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" class="form-control">
+      <div class="form-group"  style = "display:none;">
+        <label for="user_id_box"></label>
+        <input type="hidden" id="user_id_box" name="query_user_id" class="form-control" value = <%=@user.id%>>
       </div>
+
+      <h5>Environments</h5>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="format_indoor_box" name="query_format_indoor" value="1">
-
-        <label class="custom-control-label" for="format_indoor_box">Format indoor</label>
+        <label class="custom-control-label" for="format_indoor_box">Indoor</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="format_grass_box" name="query_format_grass" value="1">
 
-        <label class="custom-control-label" for="format_grass_box">Format grass</label>
+        <label class="custom-control-label" for="format_grass_box">Grass</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="format_sand_box" name="query_format_sand" value="1">
 
-        <label class="custom-control-label" for="format_sand_box">Format sand</label>
+        <label class="custom-control-label" for="format_sand_box">Sand</label>
       </div>
+
+      <h5>Formats</h5>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="players_six_box" name="query_players_six" value="1">
-
-        <label class="custom-control-label" for="players_six_box">Players six</label>
+        <label class="custom-control-label" for="players_six_box">6s</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="players_four_box" name="query_players_four" value="1">
-
-        <label class="custom-control-label" for="players_four_box">Players four</label>
+        <label class="custom-control-label" for="players_four_box">4s</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="players_three_box" name="query_players_three" value="1">
-
-        <label class="custom-control-label" for="players_three_box">Players three</label>
+        <label class="custom-control-label" for="players_three_box">Triples</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="players_two_box" name="query_players_two" value="1">
-
-        <label class="custom-control-label" for="players_two_box">Players two</label>
+        <label class="custom-control-label" for="players_two_box">Doubles</label>
       </div>
+
+      <h5>League gender</h5>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="league_gender_womens_box" name="query_league_gender_womens" value="1">
-
-        <label class="custom-control-label" for="league_gender_womens_box">League gender womens</label>
+        <label class="custom-control-label" for="league_gender_womens_box">Womens</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="league_gender_mens_box" name="query_league_gender_mens" value="1">
-
-        <label class="custom-control-label" for="league_gender_mens_box">League gender mens</label>
+        <label class="custom-control-label" for="league_gender_mens_box">Mens</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="league_gender_coed_box" name="query_league_gender_coed" value="1">
-
-        <label class="custom-control-label" for="league_gender_coed_box">League gender coed</label>
+        <label class="custom-control-label" for="league_gender_coed_box">Coed</label>
       </div>
+
+      <h5>League level</h5>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="level_recreational_box" name="query_level_recreational" value="1">
-
-        <label class="custom-control-label" for="level_recreational_box">Level recreational</label>
+        <label class="custom-control-label" for="level_recreational_box">recreational</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="level_intermediate_box" name="query_level_intermediate" value="1">
-
-        <label class="custom-control-label" for="level_intermediate_box">Level intermediate</label>
+        <label class="custom-control-label" for="level_intermediate_box">Intermediate</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="level_upper_intermediate_box" name="query_level_upper_intermediate" value="1">
-
-        <label class="custom-control-label" for="level_upper_intermediate_box">Level upper intermediate</label>
+        <label class="custom-control-label" for="level_upper_intermediate_box">Upper intermediate</label>
       </div>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="level_competitive_box" name="query_level_competitive" value="1">
-
-        <label class="custom-control-label" for="level_competitive_box">Level competitive</label>
+        <label class="custom-control-label" for="level_competitive_box">Competitive</label>
       </div>
+
+      <h5>Competitive level</h5>
 
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input" id="comp_level_aa_box" name="query_comp_level_aa" value="1">
-
         <label class="custom-control-label" for="comp_level_aa_box">Comp level aa</label>
       </div>
 

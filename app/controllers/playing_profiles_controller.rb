@@ -30,16 +30,28 @@ class PlayingProfilesController < ApplicationController
     @playing_profile.level_intermediate = params.fetch("query_level_intermediate", false)
     @playing_profile.level_upper_intermediate = params.fetch("query_level_upper_intermediate", false)
     @playing_profile.level_competitive = params.fetch("query_level_competitive", false)
-    @playing_profile.comp_level_aa = params.fetch("query_comp_level_aa", false)
-    @playing_profile.comp_level_a = params.fetch("query_comp_level_a", false)
-    @playing_profile.comp_level_bb = params.fetch("query_comp_level_bb", false)
-    @playing_profile.comp_level_b = params.fetch("query_comp_level_b", false)
-    @playing_profile.position_setter = params.fetch("query_position_setter", false)
-    @playing_profile.position_outside_hitter = params.fetch("query_position_outside_hitter", false)
-    @playing_profile.position_rightside_hitter = params.fetch("query_position_rightside_hitter", false)
-    @playing_profile.position_middle_hitter = params.fetch("query_position_middle_hitter", false)
-    @playing_profile.position_libero = params.fetch("query_position_libero", false)
-    @playing_profile.position_player = params.fetch("query_position_player", false)
+    if @playing_profile.level_competitive == true
+      @playing_profile.comp_level_aa = params.fetch("query_comp_level_aa", false)
+      @playing_profile.comp_level_a = params.fetch("query_comp_level_a", false)
+      @playing_profile.comp_level_bb = params.fetch("query_comp_level_bb", false)
+      @playing_profile.comp_level_b = params.fetch("query_comp_level_b", false)
+    end
+    if @playing_profile.level_competitive == true || @playing_profile.upper_intermediate == true || @playing_profile.intermediate == true
+      @playing_profile.position_setter = params.fetch("query_position_setter", false)
+    end
+    if @playing_profile.level_competitive == true || @playing_profile.upper_intermediate == true
+      @playing_profile.position_outside_hitter = params.fetch("query_position_outside_hitter", false)
+      @playing_profile.position_rightside_hitter = params.fetch("query_position_rightside_hitter", false)
+      @playing_profile.position_middle_hitter = params.fetch("query_position_middle_hitter", false)
+      @playing_profile.position_libero = params.fetch("query_position_libero", false)
+    end
+    if @playing_profile.level_intermediate == true
+      @playing_profile.position_player = params.fetch("query_position_player", false)
+    end
+    if @playing_profile.level_recreational == true
+      @playing_profile.position_player = true
+    end
+
 
     if @playing_profile.valid?
       @playing_profile.save

@@ -38,8 +38,8 @@
         <%end%>
         <td><%= sub_request.position.capitalize %></td>
         <td><%= sub_request.game_location %></td>
-        <td><%= sub_request.game_datetime %></td>
-        <td><%= sub_request.sender_id %></td>
+        <td><%= sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></td>
+        <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
 
         <td>
           <a href="/sub_requests/<%= sub_request.id %>">
@@ -93,8 +93,8 @@
         <%end%>
         <td><%= sub_request.position.capitalize %></td>
         <td><%= sub_request.game_location %></td>
-        <td><%= sub_request.game_datetime %></td>
-        <td><%= sub_request.sender_id %></td>
+        <td><%= sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></td>
+        <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
 
         <td>
           <a href="/sub_requests/<%= sub_request.id %>">

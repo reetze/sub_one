@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
 
+  # Routes for the Playing profile resource:
+
+  # CREATE
+  post("/insert_playing_profile", { :controller => "playing_profiles", :action => "create" })
+          
+  # READ
+  get("/playing_profiles", { :controller => "playing_profiles", :action => "index" })
+  
+  get("/playing_profiles/:path_id", { :controller => "playing_profiles", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_playing_profile/:path_id", { :controller => "playing_profiles", :action => "update" })
+  
+  # DELETE
+  get("/delete_playing_profile/:path_id", { :controller => "playing_profiles", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Sub request resource:
 
   # CREATE

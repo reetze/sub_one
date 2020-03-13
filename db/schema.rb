@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_031902) do
+ActiveRecord::Schema.define(version: 2020_03_13_145715) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,37 @@ ActiveRecord::Schema.define(version: 2020_03_13_031902) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "playing_profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "format_indoor", default: false
+    t.boolean "format_grass", default: false
+    t.boolean "format_sand", default: false
+    t.boolean "players_six", default: false
+    t.boolean "players_four", default: false
+    t.boolean "players_three", default: false
+    t.boolean "players_two", default: false
+    t.boolean "league_gender_womens", default: false
+    t.boolean "league_gender_mens", default: false
+    t.boolean "league_gender_coed", default: false
+    t.boolean "level_recreational", default: false
+    t.boolean "level_intermediate", default: false
+    t.boolean "level_upper_intermediate", default: false
+    t.boolean "level_competitive", default: false
+    t.boolean "comp_level_aa", default: false
+    t.boolean "comp_level_a", default: false
+    t.boolean "comp_level_bb", default: false
+    t.boolean "comp_level_b", default: false
+    t.boolean "position_setter", default: false
+    t.boolean "position_outside_hitter", default: false
+    t.boolean "position_rightside_hitter", default: false
+    t.boolean "position_middle_hitter", default: false
+    t.boolean "position_libero", default: false
+    t.boolean "position_player", default: false
+    t.string "coed_gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sub_requests", force: :cascade do |t|

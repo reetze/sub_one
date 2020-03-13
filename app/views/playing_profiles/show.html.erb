@@ -1,0 +1,407 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Playing profile #<%= @playing_profile.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/playing_profiles" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_playing_profile/<%= @playing_profile.id %>" class="btn btn-block btn-outline-secondary">
+          Delete playing profile
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @playing_profile.user_id %>
+      </dd>
+
+      <dt>
+        Format indoor
+      </dt>
+      <dd>
+        <%= @playing_profile.format_indoor %>
+      </dd>
+
+      <dt>
+        Format grass
+      </dt>
+      <dd>
+        <%= @playing_profile.format_grass %>
+      </dd>
+
+      <dt>
+        Format sand
+      </dt>
+      <dd>
+        <%= @playing_profile.format_sand %>
+      </dd>
+
+      <dt>
+        Players six
+      </dt>
+      <dd>
+        <%= @playing_profile.players_six %>
+      </dd>
+
+      <dt>
+        Players four
+      </dt>
+      <dd>
+        <%= @playing_profile.players_four %>
+      </dd>
+
+      <dt>
+        Players three
+      </dt>
+      <dd>
+        <%= @playing_profile.players_three %>
+      </dd>
+
+      <dt>
+        Players two
+      </dt>
+      <dd>
+        <%= @playing_profile.players_two %>
+      </dd>
+
+      <dt>
+        League gender womens
+      </dt>
+      <dd>
+        <%= @playing_profile.league_gender_womens %>
+      </dd>
+
+      <dt>
+        League gender mens
+      </dt>
+      <dd>
+        <%= @playing_profile.league_gender_mens %>
+      </dd>
+
+      <dt>
+        League gender coed
+      </dt>
+      <dd>
+        <%= @playing_profile.league_gender_coed %>
+      </dd>
+
+      <dt>
+        Level recreational
+      </dt>
+      <dd>
+        <%= @playing_profile.level_recreational %>
+      </dd>
+
+      <dt>
+        Level intermediate
+      </dt>
+      <dd>
+        <%= @playing_profile.level_intermediate %>
+      </dd>
+
+      <dt>
+        Level upper intermediate
+      </dt>
+      <dd>
+        <%= @playing_profile.level_upper_intermediate %>
+      </dd>
+
+      <dt>
+        Level competitive
+      </dt>
+      <dd>
+        <%= @playing_profile.level_competitive %>
+      </dd>
+
+      <dt>
+        Comp level aa
+      </dt>
+      <dd>
+        <%= @playing_profile.comp_level_aa %>
+      </dd>
+
+      <dt>
+        Comp level a
+      </dt>
+      <dd>
+        <%= @playing_profile.comp_level_a %>
+      </dd>
+
+      <dt>
+        Comp level bb
+      </dt>
+      <dd>
+        <%= @playing_profile.comp_level_bb %>
+      </dd>
+
+      <dt>
+        Comp level b
+      </dt>
+      <dd>
+        <%= @playing_profile.comp_level_b %>
+      </dd>
+
+      <dt>
+        Position setter
+      </dt>
+      <dd>
+        <%= @playing_profile.position_setter %>
+      </dd>
+
+      <dt>
+        Position outside hitter
+      </dt>
+      <dd>
+        <%= @playing_profile.position_outside_hitter %>
+      </dd>
+
+      <dt>
+        Position rightside hitter
+      </dt>
+      <dd>
+        <%= @playing_profile.position_rightside_hitter %>
+      </dd>
+
+      <dt>
+        Position middle hitter
+      </dt>
+      <dd>
+        <%= @playing_profile.position_middle_hitter %>
+      </dd>
+
+      <dt>
+        Position libero
+      </dt>
+      <dd>
+        <%= @playing_profile.position_libero %>
+      </dd>
+
+      <dt>
+        Position player
+      </dt>
+      <dd>
+        <%= @playing_profile.position_player %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@playing_profile.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@playing_profile.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit playing profile
+    </h2>
+
+    <form action="/modify_playing_profile/<%= @playing_profile.id %>"  method="post" >
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" class="form-control" value="<%= @playing_profile.user_id %>">
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="format_indoor_box" name="query_format_indoor" value="1" <%= "checked" if @playing_profile.format_indoor %>>
+
+        <label class="custom-control-label"
+          for="format_indoor_box">Format indoor</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="format_grass_box" name="query_format_grass" value="1" <%= "checked" if @playing_profile.format_grass %>>
+
+        <label class="custom-control-label"
+          for="format_grass_box">Format grass</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="format_sand_box" name="query_format_sand" value="1" <%= "checked" if @playing_profile.format_sand %>>
+
+        <label class="custom-control-label"
+          for="format_sand_box">Format sand</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="players_six_box" name="query_players_six" value="1" <%= "checked" if @playing_profile.players_six %>>
+
+        <label class="custom-control-label"
+          for="players_six_box">Players six</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="players_four_box" name="query_players_four" value="1" <%= "checked" if @playing_profile.players_four %>>
+
+        <label class="custom-control-label"
+          for="players_four_box">Players four</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="players_three_box" name="query_players_three" value="1" <%= "checked" if @playing_profile.players_three %>>
+
+        <label class="custom-control-label"
+          for="players_three_box">Players three</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="players_two_box" name="query_players_two" value="1" <%= "checked" if @playing_profile.players_two %>>
+
+        <label class="custom-control-label"
+          for="players_two_box">Players two</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="league_gender_womens_box" name="query_league_gender_womens" value="1" <%= "checked" if @playing_profile.league_gender_womens %>>
+
+        <label class="custom-control-label"
+          for="league_gender_womens_box">League gender womens</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="league_gender_mens_box" name="query_league_gender_mens" value="1" <%= "checked" if @playing_profile.league_gender_mens %>>
+
+        <label class="custom-control-label"
+          for="league_gender_mens_box">League gender mens</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="league_gender_coed_box" name="query_league_gender_coed" value="1" <%= "checked" if @playing_profile.league_gender_coed %>>
+
+        <label class="custom-control-label"
+          for="league_gender_coed_box">League gender coed</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="level_recreational_box" name="query_level_recreational" value="1" <%= "checked" if @playing_profile.level_recreational %>>
+
+        <label class="custom-control-label"
+          for="level_recreational_box">Level recreational</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="level_intermediate_box" name="query_level_intermediate" value="1" <%= "checked" if @playing_profile.level_intermediate %>>
+
+        <label class="custom-control-label"
+          for="level_intermediate_box">Level intermediate</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="level_upper_intermediate_box" name="query_level_upper_intermediate" value="1" <%= "checked" if @playing_profile.level_upper_intermediate %>>
+
+        <label class="custom-control-label"
+          for="level_upper_intermediate_box">Level upper intermediate</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="level_competitive_box" name="query_level_competitive" value="1" <%= "checked" if @playing_profile.level_competitive %>>
+
+        <label class="custom-control-label"
+          for="level_competitive_box">Level competitive</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="comp_level_aa_box" name="query_comp_level_aa" value="1" <%= "checked" if @playing_profile.comp_level_aa %>>
+
+        <label class="custom-control-label"
+          for="comp_level_aa_box">Comp level aa</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="comp_level_a_box" name="query_comp_level_a" value="1" <%= "checked" if @playing_profile.comp_level_a %>>
+
+        <label class="custom-control-label"
+          for="comp_level_a_box">Comp level a</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="comp_level_bb_box" name="query_comp_level_bb" value="1" <%= "checked" if @playing_profile.comp_level_bb %>>
+
+        <label class="custom-control-label"
+          for="comp_level_bb_box">Comp level bb</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="comp_level_b_box" name="query_comp_level_b" value="1" <%= "checked" if @playing_profile.comp_level_b %>>
+
+        <label class="custom-control-label"
+          for="comp_level_b_box">Comp level b</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="position_setter_box" name="query_position_setter" value="1" <%= "checked" if @playing_profile.position_setter %>>
+
+        <label class="custom-control-label"
+          for="position_setter_box">Position setter</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="position_outside_hitter_box" name="query_position_outside_hitter" value="1" <%= "checked" if @playing_profile.position_outside_hitter %>>
+
+        <label class="custom-control-label"
+          for="position_outside_hitter_box">Position outside hitter</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="position_rightside_hitter_box" name="query_position_rightside_hitter" value="1" <%= "checked" if @playing_profile.position_rightside_hitter %>>
+
+        <label class="custom-control-label"
+          for="position_rightside_hitter_box">Position rightside hitter</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="position_middle_hitter_box" name="query_position_middle_hitter" value="1" <%= "checked" if @playing_profile.position_middle_hitter %>>
+
+        <label class="custom-control-label"
+          for="position_middle_hitter_box">Position middle hitter</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="position_libero_box" name="query_position_libero" value="1" <%= "checked" if @playing_profile.position_libero %>>
+
+        <label class="custom-control-label"
+          for="position_libero_box">Position libero</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="position_player_box" name="query_position_player" value="1" <%= "checked" if @playing_profile.position_player %>>
+
+        <label class="custom-control-label"
+          for="position_player_box">Position player</label>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update playing profile
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

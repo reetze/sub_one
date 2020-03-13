@@ -1,12 +1,90 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      List of all playing profiles
+      Your playing profiles
     </h1>
   </div>
 </div>
 
 <hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Format indoor</th>
+        <th>Format grass</th>
+        <th>Format sand</th>
+        <th>Players six</th>
+        <th>Players four</th>
+        <th>Players three</th>
+        <th>Players two</th>
+        <th>League gender womens</th>
+        <th>League gender mens</th>
+        <th>League gender coed</th>
+        <th>Level recreational</th>
+        <th>Level intermediate</th>
+        <th>Level upper intermediate</th>
+        <th>Level competitive</th>
+        <th>Comp level aa</th>
+        <th>Comp level a</th>
+        <th>Comp level bb</th>
+        <th>Comp level b</th>
+        <th>Position setter</th>
+        <th>Position outside hitter</th>
+        <th>Position rightside hitter</th>
+        <th>Position middle hitter</th>
+        <th>Position libero</th>
+        <th>Position player</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th></th>
+      </tr>
+
+      <% @playing_profiles.each do |playing_profile| %>
+      <tr>
+        <td><%= playing_profile.id %></td>
+        <td><%= playing_profile.user_id %></td>
+        <td><%= playing_profile.format_indoor %></td>
+        <td><%= playing_profile.format_grass %></td>
+        <td><%= playing_profile.format_sand %></td>
+        <td><%= playing_profile.players_six %></td>
+        <td><%= playing_profile.players_four %></td>
+        <td><%= playing_profile.players_three %></td>
+        <td><%= playing_profile.players_two %></td>
+        <td><%= playing_profile.league_gender_womens %></td>
+        <td><%= playing_profile.league_gender_mens %></td>
+        <td><%= playing_profile.league_gender_coed %></td>
+        <td><%= playing_profile.level_recreational %></td>
+        <td><%= playing_profile.level_intermediate %></td>
+        <td><%= playing_profile.level_upper_intermediate %></td>
+        <td><%= playing_profile.level_competitive %></td>
+        <td><%= playing_profile.comp_level_aa %></td>
+        <td><%= playing_profile.comp_level_a %></td>
+        <td><%= playing_profile.comp_level_bb %></td>
+        <td><%= playing_profile.comp_level_b %></td>
+        <td><%= playing_profile.position_setter %></td>
+        <td><%= playing_profile.position_outside_hitter %></td>
+        <td><%= playing_profile.position_rightside_hitter %></td>
+        <td><%= playing_profile.position_middle_hitter %></td>
+        <td><%= playing_profile.position_libero %></td>
+        <td><%= playing_profile.position_player %></td>
+        <td><%= time_ago_in_words(playing_profile.created_at) %> ago</td>       <td><%= time_ago_in_words(playing_profile.updated_at) %> ago</td>
+
+        <td>
+          <a href="/playing_profiles/<%= playing_profile.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
+
 
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
@@ -174,249 +252,3 @@
   </div>
 </div>
 
-<hr>
-<div class="row mb-3">
-  <div class="col-md-12">
-    <table class="table">
-      <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
-
-        <th>
-          Format indoor
-        </th>
-
-        <th>
-          Format grass
-        </th>
-
-        <th>
-          Format sand
-        </th>
-
-        <th>
-          Players six
-        </th>
-
-        <th>
-          Players four
-        </th>
-
-        <th>
-          Players three
-        </th>
-
-        <th>
-          Players two
-        </th>
-
-        <th>
-          League gender womens
-        </th>
-
-        <th>
-          League gender mens
-        </th>
-
-        <th>
-          League gender coed
-        </th>
-
-        <th>
-          Level recreational
-        </th>
-
-        <th>
-          Level intermediate
-        </th>
-
-        <th>
-          Level upper intermediate
-        </th>
-
-        <th>
-          Level competitive
-        </th>
-
-        <th>
-          Comp level aa
-        </th>
-
-        <th>
-          Comp level a
-        </th>
-
-        <th>
-          Comp level bb
-        </th>
-
-        <th>
-          Comp level b
-        </th>
-
-        <th>
-          Position setter
-        </th>
-
-        <th>
-          Position outside hitter
-        </th>
-
-        <th>
-          Position rightside hitter
-        </th>
-
-        <th>
-          Position middle hitter
-        </th>
-
-        <th>
-          Position libero
-        </th>
-
-        <th>
-          Position player
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
-      </tr>
-
-      <% @playing_profiles.each do |playing_profile| %>
-      <tr>
-        <td>
-          <%= playing_profile.id %>
-        </td>
-
-        <td>
-          <%= playing_profile.user_id %>
-        </td>
-
-        <td>
-          <%= playing_profile.format_indoor %>
-        </td>
-
-        <td>
-          <%= playing_profile.format_grass %>
-        </td>
-
-        <td>
-          <%= playing_profile.format_sand %>
-        </td>
-
-        <td>
-          <%= playing_profile.players_six %>
-        </td>
-
-        <td>
-          <%= playing_profile.players_four %>
-        </td>
-
-        <td>
-          <%= playing_profile.players_three %>
-        </td>
-
-        <td>
-          <%= playing_profile.players_two %>
-        </td>
-
-        <td>
-          <%= playing_profile.league_gender_womens %>
-        </td>
-
-        <td>
-          <%= playing_profile.league_gender_mens %>
-        </td>
-
-        <td>
-          <%= playing_profile.league_gender_coed %>
-        </td>
-
-        <td>
-          <%= playing_profile.level_recreational %>
-        </td>
-
-        <td>
-          <%= playing_profile.level_intermediate %>
-        </td>
-
-        <td>
-          <%= playing_profile.level_upper_intermediate %>
-        </td>
-
-        <td>
-          <%= playing_profile.level_competitive %>
-        </td>
-
-        <td>
-          <%= playing_profile.comp_level_aa %>
-        </td>
-
-        <td>
-          <%= playing_profile.comp_level_a %>
-        </td>
-
-        <td>
-          <%= playing_profile.comp_level_bb %>
-        </td>
-
-        <td>
-          <%= playing_profile.comp_level_b %>
-        </td>
-
-        <td>
-          <%= playing_profile.position_setter %>
-        </td>
-
-        <td>
-          <%= playing_profile.position_outside_hitter %>
-        </td>
-
-        <td>
-          <%= playing_profile.position_rightside_hitter %>
-        </td>
-
-        <td>
-          <%= playing_profile.position_middle_hitter %>
-        </td>
-
-        <td>
-          <%= playing_profile.position_libero %>
-        </td>
-
-        <td>
-          <%= playing_profile.position_player %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(playing_profile.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(playing_profile.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/playing_profiles/<%= playing_profile.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-
-<hr>

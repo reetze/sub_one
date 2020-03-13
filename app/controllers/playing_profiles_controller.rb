@@ -1,6 +1,7 @@
 class PlayingProfilesController < ApplicationController
   def index
-    @playing_profiles = PlayingProfile.all.order({ :created_at => :desc })
+    @user = User.where({ :id => session.fetch(:user_id)}).at(0)
+    @playing_profiles = PlayingProfile.where({ :user_id => @user.id }).order({ :created_at => :desc })
 
     render({ :template => "playing_profiles/index.html.erb" })
   end

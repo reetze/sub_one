@@ -34,4 +34,6 @@
 #
 
 class PlayingProfile < ApplicationRecord
+
+
 end

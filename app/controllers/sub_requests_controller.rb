@@ -16,8 +16,10 @@ class SubRequestsController < ApplicationController
   
   def index
     @sub_requests = SubRequest.all.order({ :created_at => :desc })
+    @user = User.where({ :id => session.fetch(:user_id)}).at(0)
+    @profiles = PlayingProfile.where({ :user_id => @user.id })
 
-    render({ :template => "sub_requests/index.html.erb" })
+    render({ :template => "sub_requests/get_in_the_game.html.erb" })
   end
 
   def show

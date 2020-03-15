@@ -1,0 +1,189 @@
+<h1>Get in the game</h1>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        
+        <th>Environment</th>
+        <th>Format</th>
+        <th>Gender</th>
+        <th>Level</th>
+        <th></th>
+        <th>Coed player</th>
+        <th>Position</th>
+        <th>Location</th>
+        <th>Game time</th>
+        <th>Sender</th>
+        <th>
+        </th>
+      </tr>
+
+      <% @sub_requests.each do |sub_request| %>
+        <% @profiles.each do |profile| %>
+          <%if sub_request.league_environment == "indoor" && profile.format_indoor == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "grass" && profile.format_grass== false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+
+          <%if sub_request.league_format == "4s" && profile.players_four == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_format == "6s" && profile.players_six == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_format == "triples" && profile.players_three == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_format == "doubles" && profile.players_two == false %>
+            <%next%>
+          <%end%>
+          
+          <%if sub_request.league_gender == "coed" && profile.league_gender_coed == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_gender == "mens" && profile.league_gender_mens == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_gender == "womens" && profile.league_gender_womens == false %>
+            <%next%>
+          <%end%>
+
+          <%if sub_request.league_level == "competitive" && profile.level_competitive == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_level == "upper intermediate" && profile.level_upper_intermediate == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_level == "intermediate" && profile.level_intermediate == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_level == "recreational" && profile.level_recreational == false %>
+            <%next%>
+          <%end%>
+          
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+            <%next%>
+          <%end%>
+
+          <tr>
+            <td><%= sub_request.league_environment.capitalize %></td>
+            <td><%= sub_request.league_format.capitalize %></td>
+            <td><%= sub_request.league_gender.capitalize %></td>
+            <td><%= sub_request.league_level.capitalize %></td>
+            <%if sub_request.competition_level == "" %>
+              <td></td>
+            <%else%>
+              <td><%= sub_request.competition_level.upcase %></td>
+            <%end%>
+            <%if sub_request.league_gender == "coed" %>
+              <td><%= sub_request.player_gender.capitalize %></td>
+            <%else%>
+              <td></td>
+            <%end%>
+            <td><%= sub_request.position.capitalize %></td>
+            <td><%= sub_request.game_location %></td>
+            <td><%= sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></td>
+            <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
+            <td><a href="/sub_requests/<%= sub_request.id %>">Show details</a></td>
+          </tr>
+
+
+        <%end%>
+      <% end %>
+
+    </table>
+  </div>
+</div>
+
+
+<h1>All sub requests</h1>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        
+        <th>Environment</th>
+        <th>Format</th>
+        <th>Gender</th>
+        <th>Level</th>
+        <th></th>
+        <th>Coed player</th>
+        <th>Position</th>
+        <th>Location</th>
+        <th>Game time</th>
+        <th>Sender</th>
+        <th>
+        </th>
+      </tr>
+
+      <% @sub_requests.each do |sub_request| %>
+      <tr>
+        
+        <td><%= sub_request.league_environment.capitalize %></td>
+        <td><%= sub_request.league_format.capitalize %></td>
+        <td><%= sub_request.league_gender.capitalize %></td>
+        <td><%= sub_request.league_level.capitalize %></td>
+        <%if sub_request.competition_level == "" %>
+          <td></td>
+        <%else%>
+          <td><%= sub_request.competition_level.upcase %></td>
+        <%end%>
+        <%if sub_request.league_gender == "coed" %>
+          <td><%= sub_request.player_gender.capitalize %></td>
+        <%else%>
+          <td></td>
+        <%end%>
+        <td><%= sub_request.position.capitalize %></td>
+        <td><%= sub_request.game_location %></td>
+        <td><%= sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></td>
+        <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
+
+        <td>
+          <a href="/sub_requests/<%= sub_request.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

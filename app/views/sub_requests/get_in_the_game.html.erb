@@ -67,18 +67,20 @@
             <%next%>
           <%end%>
           
-          <%if sub_request.league_level == "competitive" && sub_request.competition_level != ""%>
-            <%if sub_request.competition_level == "aa" && profile.comp_level_aa == false %>
-              <%next%>
-            <%end%>
-            <%if sub_request.competition_level == "a" && profile.comp_level_a == false %>
-              <%next%>
-            <%end%>
-            <%if sub_request.competition_level == "bb" && profile.comp_level_bb == false %>
-              <%next%>
-            <%end%>
-            <%if sub_request.competition_level == "b" && profile.comp_level_b == false %>
-              <%next%>
+          <%if profile.comp_level_aa != false || profile.comp_level_a != false || profile.comp_level_bb != false || profile.comp_level_b != false%>
+            <%if sub_request.league_level == "competitive" && sub_request.competition_level != ""%>
+              <%if sub_request.competition_level == "aa" && profile.comp_level_aa == false %>
+                <%next%>
+              <%end%>
+              <%if sub_request.competition_level == "a" && profile.comp_level_a == false %>
+                <%next%>
+              <%end%>
+              <%if sub_request.competition_level == "bb" && profile.comp_level_bb == false %>
+                <%next%>
+              <%end%>
+              <%if sub_request.competition_level == "b" && profile.comp_level_b == false %>
+                <%next%>
+              <%end%>
             <%end%>
           <%end%>
 

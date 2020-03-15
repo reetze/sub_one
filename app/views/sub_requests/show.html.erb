@@ -3,24 +3,27 @@
     <h1>
       Sub request for <%= @sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></h1>
 
-      <div class="col">
-        <a href="/sub_requests" class="btn btn-block btn-outline-secondary">
-          Go back
-        </a>
-      </div>
-
     <div class="row mb-3">
+      <%if User.where({ :id => @sub_request.sender_id}).at(0).id == session.fetch(:user_id)%>
+        <div class="col">
+          <a href="/delete_sub_request/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary">
+            Delete sub request
+          </a>
+        </div>
+      <%else%>
+        <div class="col">
+          <a href="/sub_requests" class="btn btn-block btn-outline-secondary" style = "background-color: #4CAF50; color:white ">
+            Email <%=User.where({ :id => @sub_request.sender_id}).at(0).first_and_last_init%>
+          </a>
+        </div>
+      <%end%>
+
       <div class="col">
         <a href="/sub_requests" class="btn btn-block btn-outline-secondary">
           Go back
         </a>
       </div>
 
-      <div class="col">
-        <a href="/delete_sub_request/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary">
-          Delete sub request
-        </a>
-      </div>
     </div>
 
     <dl>
@@ -67,116 +70,120 @@
 
 <hr>
 
+<%if User.where({ :id => @sub_request.sender_id}).at(0).id == session.fetch(:user_id)%>
+  <div class="row mb-3">
+    <div class="col-md-8 offset-md-2">
+      <h2>
+        Edit sub request
+      </h2>
+        <form action="/modify_sub_request/<%=@sub_request.id%>" method="post">
 
-<div class="row mb-3">
-  <div class="col-md-8 offset-md-2">
-    <h2>
-      Edit sub request
-    </h2>
-      <form action="/modify_sub_request/<%=@sub_request.id%>" method="post">
+  <form action="/insert_sub_request" method="post">
 
-<form action="/insert_sub_request" method="post">
+        <div class="form-group" style = "display:none">
+          <label for="sender_id_box"></label>
+          <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value= <%=@user.id%>>
+        </div>
 
-      <div class="form-group" style = "display:none">
-        <label for="sender_id_box"></label>
-        <input type="hidden" id="sender_id_box" name="query_sender_id" class="form-control" value= <%=@user.id%>>
-      </div>
+        <div class="form-group" style = "display:none">
+          <label for="league_level_id_box"></label>
+          <input type="hidden" id="league_level_id_box" name="query_league_level" class="form-control" value= <%=@sub_request.league_level%>>
+        </div>
 
-      <div class="form-group" style = "display:none">
-        <label for="league_level_id_box"></label>
-        <input type="hidden" id="league_level_id_box" name="query_league_level" class="form-control" value= <%=@sub_request.league_level%>>
-      </div>
+        <div class="form-group" style = "display:none">
+          <label for="league_gender_id_box"></label>
+          <input type="hidden" id="league_gender_id_box" name="query_league_gender" class="form-control" value= <%=@sub_request.league_gender%>>
+        </div>
 
-      <div class="form-group" style = "display:none">
-        <label for="league_gender_id_box"></label>
-        <input type="hidden" id="league_gender_id_box" name="query_league_gender" class="form-control" value= <%=@sub_request.league_gender%>>
-      </div>
-
-      <div class="form-group">
-        <label for="league_environment_box">Environment</label>
-        <select type="dropdown" id="league_environment_box" name="query_league_environment" class="form-control">
-          <option value="<%=@sub_request.league_environment%>"> <%=@sub_request.league_environment.capitalize%>  (current selection)</option>
-          <option value="indoor">Indoor</option>
-          <option value="sand">Sand</option>
-          <option value="grass">Grass</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="league_format_box">Format</label>
-        <select type="dropdown" id="league_format_box" name="query_league_format" class="form-control">
-          <option value="<%=@sub_request.league_format%>"> <%=@sub_request.league_format.capitalize%>  (current selection)</option>
-          <option value="sixes">6s</option>
-          <option value="fours">4s</option>
-          <option value="triples">Triples</option>
-          <option value="doubles">Doubles</option>
-        </select>
-      </div>
-
-     <%if @sub_request.league_level == "competitive"%>
         <div class="form-group">
-          <label for="competition_level_box">Level</label>
-          <select type="dropdown" id="competition_level_box" name="query_competition_level" class="form-control">
-            <option value="<%=@sub_request.competition_level%>"> <%=@sub_request.competition_level.upcase%>  (current selection)</option>
-            <option></option>
-            <option value="aa">AA</option>
-            <option value="a">A</option>
-            <option value="bb">BB</option>
-            <option value="b">B</option>
+          <label for="league_environment_box">Environment</label>
+          <select type="dropdown" id="league_environment_box" name="query_league_environment" class="form-control">
+            <option value="<%=@sub_request.league_environment%>"> <%=@sub_request.league_environment.capitalize%>  (current selection)</option>
+            <option value="indoor">Indoor</option>
+            <option value="sand">Sand</option>
+            <option value="grass">Grass</option>
           </select>
         </div>
-      <%end%>
 
-      <%if @sub_request.league_gender == "coed"%>
         <div class="form-group">
-          <label for="player_gender_box">Coed player gender</label>
-          <select type="dropdown" id="player_gender_box" name="query_player_gender" class="form-control">
-            <option value="<%=@sub_request.player_gender%>"> <%=@sub_request.player_gender.capitalize%>  (current selection)</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
+          <label for="league_format_box">Format</label>
+          <select type="dropdown" id="league_format_box" name="query_league_format" class="form-control">
+            <option value="<%=@sub_request.league_format%>"> <%=@sub_request.league_format.capitalize%>  (current selection)</option>
+            <option value="sixes">6s</option>
+            <option value="fours">4s</option>
+            <option value="triples">Triples</option>
+            <option value="doubles">Doubles</option>
           </select>
         </div>
-      <%end%>
 
-      <%if @sub_request.league_level == "recreational"%>
-        <input type="hidden" id="position_box" name="query_position" class="form-control" value="player">
-      <%else%>
+      <%if @sub_request.league_level == "competitive"%>
+          <div class="form-group">
+            <label for="competition_level_box">Level</label>
+            <select type="dropdown" id="competition_level_box" name="query_competition_level" class="form-control">
+              <option value="<%=@sub_request.competition_level%>"> <%=@sub_request.competition_level.upcase%>  (current selection)</option>
+              <option></option>
+              <option value="aa">AA</option>
+              <option value="a">A</option>
+              <option value="bb">BB</option>
+              <option value="b">B</option>
+            </select>
+          </div>
+        <%end%>
+
+        <%if @sub_request.league_gender == "coed"%>
+          <div class="form-group">
+            <label for="player_gender_box">Coed player gender</label>
+            <select type="dropdown" id="player_gender_box" name="query_player_gender" class="form-control">
+              <option value="<%=@sub_request.player_gender%>"> <%=@sub_request.player_gender.capitalize%>  (current selection)</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+          </div>
+        <%end%>
+
+        <%if @sub_request.league_level == "recreational"%>
+          <input type="hidden" id="position_box" name="query_position" class="form-control" value="player">
+        <%else%>
+          <div class="form-group">
+            <label for="position_box">Position</label>
+            <select type="dropdown" id="position_box" name="query_position" class="form-control">
+              <%if @sub_request.league_level == "intermediate"%>
+                <option value="<%=@sub_request.position%>"> <%=@sub_request.position.capitalize%>  (current selection)</option>
+                <option value="player">Any player</option>
+                <option value="setter">Setter</option>
+              <%else%>
+                <option value="<%=@sub_request.position%>"> <%=@sub_request.position.capitalize%>  (current selection)</option>
+                <option value="setter">Setter</option>
+                <option value="outside">Outside hitter</option>
+                <option value="rightside">Rightside hitter</option>
+                <option value="middle">Middle hitter</option>
+                <option value="libero">Libero/defense</option>
+              <%end%>
+            </select>
+          </div>
+        <%end%>
+
+
         <div class="form-group">
-          <label for="position_box">Position</label>
-          <select type="dropdown" id="position_box" name="query_position" class="form-control">
-            <%if @sub_request.league_level == "intermediate"%>
-              <option value="<%=@sub_request.position%>"> <%=@sub_request.position.capitalize%>  (current selection)</option>
-              <option value="player">Any player</option>
-              <option value="setter">Setter</option>
-            <%else%>
-              <option value="<%=@sub_request.position%>"> <%=@sub_request.position.capitalize%>  (current selection)</option>
-              <option value="setter">Setter</option>
-              <option value="outside">Outside hitter</option>
-              <option value="rightside">Rightside hitter</option>
-              <option value="middle">Middle hitter</option>
-              <option value="libero">Libero/defense</option>
-            <%end%>
-          </select>
+          <label for="game_location_box">Game location</label>
+          <textarea id="game_location_box" name="query_game_location" class="form-control" rows="3"><%=@sub_request.game_location%></textarea>
         </div>
-      <%end%>
 
+        <div class="form-group">
+          <label for="game_datetime_box">When's the game</label>
+          <input type="datetime-local" id="game_datetime_box" name="query_game_datetime" class="form-control" value = <%=@sub_request.game_datetime.strftime("%Y-%m-%eT%H:%M")%>>
+          <p style="color: gray"><%=@sub_request.game_datetime.strftime(" %-m/%e/%y %I:%M %p")%> currently</p>
+        </div>
 
-      <div class="form-group">
-        <label for="game_location_box">Game location</label>
-        <textarea id="game_location_box" name="query_game_location" class="form-control" rows="3"><%=@sub_request.game_location%></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="game_datetime_box">When's the game</label>
-        <input type="datetime-local" id="game_datetime_box" name="query_game_datetime" class="form-control" value = <%=@sub_request.game_datetime.strftime("%Y-%m-%eT%H:%M")%>>
-        <p style="color: gray"><%=@sub_request.game_datetime.strftime(" %-m/%e/%y %I:%M %p")%> currently</p>
-      </div>
-
-      <button class="btn btn-block btn-outline-secondary">
-        Update sub request
-      </button>
-    </form>
+        <button class="btn btn-block btn-outline-secondary">
+          Update sub request
+        </button>
+      </form>
+    </div>
   </div>
-</div>
 
-<hr>
+ <hr>
+
+<%end%>
+
+ 

@@ -1,5 +1,17 @@
 class SubRequestsController < ApplicationController
   
+  def email
+    @requestor = params.fetch("sub_req")
+
+    # if @sub_request.valid?
+    #   @sub_request.save
+    #   redirect_to("/sub_requests", { :notice => "Sub request created successfully." })
+    # else
+    #   redirect_to("/sub_requests", { :notice => "Sub request failed to create successfully." })
+    # end
+    
+  end
+
   def step_two
     @competition_level = params.fetch("the_league_level")
     @league_gender = params.fetch("query_league_gender")

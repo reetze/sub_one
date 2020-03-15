@@ -6,14 +6,14 @@
     <div class="row mb-3">
       <%if User.where({ :id => @sub_request.sender_id}).at(0).id == session.fetch(:user_id)%>
         <div class="col">
-          <a href="/delete_sub_request/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary">
+          <a href="/delete_sub_request/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary" style = "background-color: red; color:white">
             Delete sub request
           </a>
         </div>
       <%else%>
         <div class="col">
           <form action="/email_sender" method="post">
-            <button class="btn btn-block btn-outline-secondary" style = "background-color: #4CAF50; color:white ">
+            <button class="btn btn-block btn-outline-secondary" style = "background-color: #4CAF50; color:white">
               Email <%=User.where({ :id => @sub_request.sender_id}).at(0).first_and_last_init%>
             </button>
             <input type="hidden" name="sub_req" value= <%=@sub_request%>>
@@ -28,6 +28,25 @@
       </div>
 
     </div>
+
+    <dl>
+
+      <%if User.where({ :id => @sub_request.sender_id}).at(0).id == session.fetch(:user_id)%>
+        <%if @sub_request.found_sub == false %>
+          <div class="col">
+            <a href="/sub_found/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary" style = "background-color: #4CAF50; color:white">
+              Found a sub? Mark this sub request as satisfied
+            </a>
+          </div>
+        <%else%>
+          <div class="col">
+            <a href="/sub_found/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary" style = "background-color: blue; color:white">
+              Still need a sub? Mark this sub request as active
+            </a>
+          </div>
+        <%end%>
+
+      <%end%>
 
     <dl>
 

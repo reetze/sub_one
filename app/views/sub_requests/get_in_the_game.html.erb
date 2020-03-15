@@ -20,6 +20,9 @@
       </tr>
 
       <% @sub_requests.each do |sub_request| %>
+        <%if sub_request.found_sub == true %>
+          <%next%>
+        <%end%>
         <% @profiles.each do |profile| %>
           <%if sub_request.league_environment == "indoor" && profile.format_indoor == false %>
             <%next%>
@@ -171,7 +174,7 @@
         </th>
       </tr>
 
-      <% @sub_requests.each do |sub_request| %>
+      <% @sub_requests.where({ :found_sub => false}).each do |sub_request| %>
       <tr>
         
         <td><%= sub_request.league_environment.capitalize %></td>

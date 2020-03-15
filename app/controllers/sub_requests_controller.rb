@@ -1,5 +1,20 @@
 class SubRequestsController < ApplicationController
   
+  def sub_found
+    the_id = params.fetch("path_id")
+    @sub_request = SubRequest.where({:id => the_id }).at(0)
+    
+    @sub_request.found_sub = true
+
+    if @sub_request.valid?
+      @sub_request.save
+      redirect_to("/sub_requests/#{@sub_request.id}", { :notice => "Sub request marked satisfied." })
+    else
+      redirect_to("/sub_requests/#{@sub_request.id}", { :notice => "Sub request failed to update successfully." })
+    end
+
+  end
+
   def email
     @requestor = params.fetch("sub_req")
 
@@ -9,7 +24,7 @@ class SubRequestsController < ApplicationController
     # else
     #   redirect_to("/sub_requests", { :notice => "Sub request failed to create successfully." })
     # end
-    
+
   end
 
   def step_two

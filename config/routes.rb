@@ -33,8 +33,8 @@ Rails.application.routes.draw do
   post("/email_sender", { :controller => "sub_requests", :action => "email" })
   
   # UPDATE
-  
   post("/modify_sub_request/:path_id", { :controller => "sub_requests", :action => "update" })
+  get("/sub_found/:path_id", { :controller => "sub_requests", :action => "sub_found" })
   
   # DELETE
   get("/delete_sub_request/:path_id", { :controller => "sub_requests", :action => "destroy" })

@@ -16,6 +16,7 @@ class PlayingProfilesController < ApplicationController
   def create
     @playing_profile = PlayingProfile.new
     @playing_profile.user_id = params.fetch("query_user_id")
+    @playing_profile.coed_gender = params.fetch("query_user_gender")
     @playing_profile.format_indoor = params.fetch("query_format_indoor", false)
     @playing_profile.format_grass = params.fetch("query_format_grass", false)
     @playing_profile.format_sand = params.fetch("query_format_sand", false)

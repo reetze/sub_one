@@ -9,7 +9,8 @@
 #  comp_level_b              :boolean          default(FALSE)
 #  comp_level_bb             :boolean          default(FALSE)
 #  format_grass              :boolean          default(FALSE)
-#  format_indoor             :boolean          default(FALSE)
+
+#  :boolean          default(FALSE)
 #  format_sand               :boolean          default(FALSE)
 #  league_gender_coed        :boolean          default(FALSE)
 #  league_gender_mens        :boolean          default(FALSE)

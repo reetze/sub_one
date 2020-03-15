@@ -133,9 +133,11 @@
             <td><%= sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></td>
             <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
             <td>
-              <form action="/sub_requests/<%= sub_request.id %>">
-                <button style = "background-color: #4CAF50;">Play!</button>
-              </form>
+              <div class="col">
+                <a href="/sub_requests" class="btn btn-block btn-outline-secondary">
+                  Play!
+                </a>
+              </div>
             </td>
           </tr>
 

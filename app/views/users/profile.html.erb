@@ -1,5 +1,5 @@
 
-<h2>Your sub requests</h2>
+<h1>Your sub requests</h1>
 
 <div class="row mb-3">
   <div class="col-md-12">
@@ -55,73 +55,138 @@
 
 <hr>
 
-<h2>Your playing levels</h2>
+<h1>Your playing levels</h1>
 
 <div class="row mb-3">
   <div class="col-md-12">
+
+    <form action = "/playing_profiles">
+      <button>Add a new playing profile</button>
+    </form>
+
     <table class="table">
       <tr>
-        <th>ID</th>
-        <th>User</th>
-        <th>Format indoor</th>
-        <th>Format grass</th>
-        <th>Format sand</th>
-        <th>Players six</th>
-        <th>Players four</th>
-        <th>Players three</th>
-        <th>Players two</th>
-        <th>League gender womens</th>
-        <th>League gender mens</th>
-        <th>League gender coed</th>
-        <th>Level recreational</th>
-        <th>Level intermediate</th>
-        <th>Level upper intermediate</th>
-        <th>Level competitive</th>
-        <th>Comp level aa</th>
-        <th>Comp level a</th>
-        <th>Comp level bb</th>
-        <th>Comp level b</th>
-        <th>Position setter</th>
-        <th>Position outside hitter</th>
-        <th>Position rightside hitter</th>
-        <th>Position middle hitter</th>
-        <th>Position libero</th>
-        <th>Position player</th>
-        <th>Created at</th>
-        <th>Updated at</th>
+
+
+        <th>Environment</th>
+        <th>Format</th>
+        <th>Gender</th>
+        <th>Level</th>
+        <th>Position</th>
         <th></th>
       </tr>
 
       <% @playing_profiles.each do |playing_profile| %>
       <tr>
-        <td><%= playing_profile.id %></td>
-        <td><%= playing_profile.user_id %></td>
-        <td><%= playing_profile.format_indoor %></td>
-        <td><%= playing_profile.format_grass %></td>
-        <td><%= playing_profile.format_sand %></td>
-        <td><%= playing_profile.players_six %></td>
-        <td><%= playing_profile.players_four %></td>
-        <td><%= playing_profile.players_three %></td>
-        <td><%= playing_profile.players_two %></td>
-        <td><%= playing_profile.league_gender_womens %></td>
-        <td><%= playing_profile.league_gender_mens %></td>
-        <td><%= playing_profile.league_gender_coed %></td>
-        <td><%= playing_profile.level_recreational %></td>
-        <td><%= playing_profile.level_intermediate %></td>
-        <td><%= playing_profile.level_upper_intermediate %></td>
-        <td><%= playing_profile.level_competitive %></td>
-        <td><%= playing_profile.comp_level_aa %></td>
-        <td><%= playing_profile.comp_level_a %></td>
-        <td><%= playing_profile.comp_level_bb %></td>
-        <td><%= playing_profile.comp_level_b %></td>
-        <td><%= playing_profile.position_setter %></td>
-        <td><%= playing_profile.position_outside_hitter %></td>
-        <td><%= playing_profile.position_rightside_hitter %></td>
-        <td><%= playing_profile.position_middle_hitter %></td>
-        <td><%= playing_profile.position_libero %></td>
-        <td><%= playing_profile.position_player %></td>
-        <td><%= time_ago_in_words(playing_profile.created_at) %> ago</td>       <td><%= time_ago_in_words(playing_profile.updated_at) %> ago</td>
 
+        <td>
+          <ul style = "list-style-position: inside; padding-inline-start: 0;">
+            <%if playing_profile.format_indoor == true %>
+              <li>Indoor</li>
+            <%end%>
+            <%if playing_profile.format_grass == true %>
+              <li>Grass</li>
+            <%end%>
+            <%if playing_profile.format_sand == true %>
+              <li>Sand</li>
+            <%end%>
+          </ul>
+        </td>
+
+        <td>
+          <ul style = "list-style-position: inside; padding-inline-start: 0;">
+            <%if playing_profile.players_six == true %>
+              <li>6s</li>
+            <%end%>
+            <%if playing_profile.players_four == true %>
+              <li>4s</li>
+            <%end%>
+            <%if playing_profile.players_three == true %>
+              <li>Triples</li>
+            <%end%>
+            <%if playing_profile.players_two == true %>
+              <li>Doubles</li>
+            <%end%>
+          </ul>
+        </td>
+
+        <td>
+          <ul style = "list-style-position: inside; padding-inline-start: 0;">
+          <%if playing_profile.league_gender_womens == true %>
+            <li>Womens</li>
+          <%end%>
+          <%if playing_profile.league_gender_mens == true %>
+            <li>Mens</li>
+          <%end%>
+          <%if playing_profile.league_gender_coed == true %>
+            <li>Coed</li>
+          <%end%>
+          </ul>
+        </td>
+  
+        <td>
+          <ul style = "list-style-position: inside; padding-inline-start: 0;">
+            <%if playing_profile.level_recreational == true %>
+              <li>Recreational</li>
+            <%end%>
+            <%if playing_profile.level_intermediate == true %>
+              <li>Intermediate</li>
+            <%end%>
+            <%if playing_profile.level_upper_intermediate == true %>
+              <li>Upper intermediate</li>
+            <%end%>
+            <%if playing_profile.level_competitive == true %>
+              <li>Competitive
+
+                <%if playing_profile.comp_level_aa == true || playing_profile.comp_level_a == true || playing_profile.comp_level_bb == true || playing_profile.comp_level_b == true%>
+                  (
+                <%end%>
+
+                <%if playing_profile.comp_level_aa == true %>
+                  AA 
+                <%end%>
+                <%if playing_profile.comp_level_a == true %>
+                  A 
+                <%end%>
+                <%if playing_profile.comp_level_bb == true %>
+                  BB 
+                <%end%>
+                <%if playing_profile.comp_level_b == true %>
+                  B
+                <%end%>
+              
+                <%if playing_profile.comp_level_aa == true || playing_profile.comp_level_a == true || playing_profile.comp_level_bb == true || playing_profile.comp_level_b == true%>
+                  )
+                <%end%>
+
+              </li>
+
+            <%end%>
+          </ul>
+        </td>
+
+        <td>
+          <ul style = "list-style-position: inside; padding-inline-start: 0;">
+            <%if playing_profile.position_setter == true %>
+              <li>Setter</li>
+            <%end%>
+            <%if playing_profile.position_outside_hitter == true %>
+              <li>Outside hitter</li>
+            <%end%>
+            <%if playing_profile.position_rightside_hitter == true %>
+              <li>Rightside hitter</li>
+            <%end%>
+            <%if playing_profile.position_middle_hitter == true %>
+              <li>Recreational</li>
+            <%end%>
+            <%if playing_profile.position_libero == true %>
+              <li>Libero</li>
+            <%end%>
+            <%if playing_profile.position_player == true %>
+              <li>Player</li>
+            <%end%>
+          </ul>
+        </td>
         <td>
           <a href="/playing_profiles/<%= playing_profile.id %>">
             Show details
@@ -135,7 +200,7 @@
 
 <hr>
 
-<h2>Edit your profile</h2>
+<h1>Edit your profile</h1>
 
 <div >
 

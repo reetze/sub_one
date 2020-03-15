@@ -20,4 +20,5 @@
 #
 
 class SubRequest < ApplicationRecord
+
 end

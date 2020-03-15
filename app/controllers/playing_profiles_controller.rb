@@ -55,7 +55,7 @@ class PlayingProfilesController < ApplicationController
 
     if @playing_profile.valid?
       @playing_profile.save
-      redirect_to("/playing_profiles", { :notice => "Playing profile created successfully." })
+      redirect_to("/profile", { :notice => "Playing profile created successfully." })
     else
       redirect_to("/playing_profiles", { :notice => "Playing profile failed to create successfully." })
     end
@@ -105,6 +105,6 @@ class PlayingProfilesController < ApplicationController
 
     @playing_profile.destroy
 
-    redirect_to("/playing_profiles", { :notice => "Playing profile deleted successfully."} )
+    redirect_to("/profile", { :notice => "Playing profile deleted successfully."} )
   end
 end

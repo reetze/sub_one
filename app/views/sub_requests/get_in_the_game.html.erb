@@ -57,7 +57,7 @@
           <%if sub_request.league_level == "competitive" && profile.level_competitive == false %>
             <%next%>
           <%end%>
-          <%if sub_request.league_level == "upper intermediate" && profile.level_upper_intermediate == false %>
+          <%if sub_request.league_level == "upper_intermediate" && profile.level_upper_intermediate == false %>
             <%next%>
           <%end%>
           <%if sub_request.league_level == "intermediate" && profile.level_intermediate == false %>
@@ -90,19 +90,26 @@
             <%end%>
           <%end%>
 
-          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+          <%if sub_request.position == "libero" && profile.position_libero == false %>
             <%next%>
           <%end%>
-          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+          <%if sub_request.position == "middle" && profile.position_middle_hitter == false %>
             <%next%>
           <%end%>
-          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+          <%if sub_request.position == "outside" && profile.position_outside_hitter == false %>
             <%next%>
           <%end%>
-          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+          <%if sub_request.position == "player" && profile.position_player == false %>
             <%next%>
           <%end%>
-          <%if sub_request.league_environment == "sand" && profile.format_sand == false %>
+          <%if sub_request.position == "rightside" && profile.position_rightside_hitter == false %>
+            <%next%>
+          <%end%>
+          <%if sub_request.position == "setter" && profile.position_setter == false %>
+            <%next%>
+          <%end%>
+
+          <%if sub_request.sender_id == @user.id %>
             <%next%>
           <%end%>
 
@@ -110,7 +117,7 @@
             <td><%= sub_request.league_environment.capitalize %></td>
             <td><%= sub_request.league_format.capitalize %></td>
             <td><%= sub_request.league_gender.capitalize %></td>
-            <td><%= sub_request.league_level.capitalize %></td>
+            <td><%= sub_request.league_level.gsub("_"," ").capitalize %></td>
             <%if sub_request.competition_level == "" %>
               <td></td>
             <%else%>
@@ -164,7 +171,7 @@
         <td><%= sub_request.league_environment.capitalize %></td>
         <td><%= sub_request.league_format.capitalize %></td>
         <td><%= sub_request.league_gender.capitalize %></td>
-        <td><%= sub_request.league_level.capitalize %></td>
+        <td><%= sub_request.league_level.gsub("_"," ").capitalize %></td>
         <%if sub_request.competition_level == "" %>
           <td></td>
         <%else%>

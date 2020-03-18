@@ -5,7 +5,7 @@
     </h1>
 
     <div class="row mb-3">
-      <div class="col"><a href="/playing_profiles" class="btn btn-block btn-outline-secondary">  Go back</a></div>
+      <div class="col"><a href="/profile" class="btn btn-block btn-outline-secondary">  Back to your profile</a></div>
 
       <div class="col"><a href="/delete_playing_profile/<%= @playing_profile.id %>" class="btn btn-block btn-outline-secondary">  Delete playing profile</a></div>
     </div>
@@ -156,7 +156,7 @@
 <div class="row mb-3">
   <div class="col-md-8 offset-md-2">
     <h2>
-      Edit playing profile
+      Edit this playing profile
     </h2>
 
     <form action="/modify_playing_profile/<%= @playing_profile.id %>"  method="post" >

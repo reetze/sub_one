@@ -1,4 +1,5 @@
 <h1>Get in the game</h1>
+<p>Sub requests that match your playing profiles</p>
 
 <div class="row mb-3">
   <div class="col-md-12">
@@ -133,7 +134,7 @@
             <%end%>
             <td><%= sub_request.position.capitalize %></td>
             <td><%= sub_request.game_location %></td>
-            <td><%= sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></td>
+            <td><%= sub_request.game_datetime.strftime("%a %-m/%-e/%y %I:%M %p") %></td>
             <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
             <td>
               <div class="col">
@@ -153,11 +154,11 @@
 </div>
 
 
-<h1>All sub requests</h1>
+<h1 style ="color:gray;">All active sub requests</h1>
 
 <div class="row mb-3">
   <div class="col-md-12">
-    <table class="table">
+    <table class="table" style ="color:gray;">
       <tr>
         
         <th>Environment</th>
@@ -193,7 +194,7 @@
         <%end%>
         <td><%= sub_request.position.capitalize %></td>
         <td><%= sub_request.game_location %></td>
-        <td><%= sub_request.game_datetime.strftime("%a %-m/%e/%y %I:%M %p") %></td>
+        <td><%= sub_request.game_datetime.strftime("%a %-m/%-e/%y %I:%M %p") %></td>
         <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
 
         <td>

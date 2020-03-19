@@ -32,14 +32,25 @@ class SubRequestsController < ApplicationController
   end
 
   def email
-    @requestor = params.fetch("sub_req")
+    the_sub_request = params.fetch("the_sub_req")
+    volunteer_id = params.fetch("path_id")
 
-    # if @sub_request.valid?
-    #   @sub_request.save
-    #   redirect_to("/sub_requests", { :notice => "Sub request created successfully." })
-    # else
-    #   redirect_to("/sub_requests", { :notice => "Sub request failed to create successfully." })
-    # end
+    mg_api_key = ENV.fetch("mailgun_token")
+    mg_client = Mailgun::Client.new(mg_api_key)
+
+    message_params =  {
+      :from => "mailgun@mail.volleyballsub1.com",
+      :to => "erica.reetz@gmail.com",
+      :subject => "You have a sub!",
+      :text => "testing... testing..."
+    }
+
+    #User.where({ :id => volunteer_id }).at(0).email
+
+    # Send your message through the client
+    mg_client.send_message("mail.volleyballsub1.com", message_params)
+
+    redirect_to("/sub_requests", { :notice => "Email sent" })
 
   end
 

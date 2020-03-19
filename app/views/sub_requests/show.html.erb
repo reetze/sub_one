@@ -12,12 +12,9 @@
         </div>
       <%else%>
         <div class="col">
-          <form action="/email_sender" method="post">
-            <button class="btn btn-block btn-outline-secondary" style = "background-color: #ACEEB5; color:black">
-              Email <%=User.where({ :id => @sub_request.sender_id}).at(0).first_and_last_init%>
-            </button>
-            <input type="hidden" name="the_sub_req" value= <%=@sub_request%>>
-          </form>
+          <a href="/email_sender/<%= @sub_request.id %>" class="btn btn-block btn-outline-secondary" style = "background-color: #ACEEB5; color:black">
+            Email <%=User.where({ :id => @sub_request.sender_id}).at(0).first_and_last_init%>
+          </a>
         </div>
       <%end%>
 

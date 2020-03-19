@@ -32,7 +32,8 @@ class SubRequestsController < ApplicationController
   end
 
   def email
-    # sub_request_id = params.fetch("path_id")
+    sub_request_id = params.fetch("path_id")
+    requestor_id = SubRequest.where({ :id => sub_request_id }).at(0).sender_id
     # volunteer = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     mg_api_key = ENV.fetch("mailgun_token")
@@ -40,7 +41,7 @@ class SubRequestsController < ApplicationController
 
     message_params =  {
       :from => "mailgun@mail.volleyballsub1.com",
-      :to => "erica.reetz@gmail.com",
+      :to => User.where({ :id => requestor_id }).at(0).email,
       :subject => "You have a sub!",
       :text => "testing... testing..."
     }

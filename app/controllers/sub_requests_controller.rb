@@ -34,7 +34,7 @@ class SubRequestsController < ApplicationController
   def email
     sub_request_id = params.fetch("path_id")
     requestor_id = SubRequest.where({ :id => sub_request_id }).at(0).sender_id
-    # volunteer = User.where({ :id => session.fetch(:user_id)}).at(0)
+    volunteer = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     mg_api_key = ENV.fetch("mailgun_token")
     mg_client = Mailgun::Client.new(mg_api_key)
@@ -42,11 +42,9 @@ class SubRequestsController < ApplicationController
     message_params =  {
       :from => "mailgun@mail.volleyballsub1.com",
       :to => User.where({ :id => requestor_id }).at(0).email,
-      :subject => "You have a sub!",
+      :subject => volunteer.first_and_last_init.to_s + " can play on " + SubRequest.where({ :id => sub_request_id }).at(0).game_datetime.strftime("%a %-m/%-e"),
       :text => "testing... testing..."
     }
-
-    #User.where({ :id => volunteer_id }).at(0).email
 
     # Send your message through the client
     mg_client.send_message("mail.volleyballsub1.com", message_params)

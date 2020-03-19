@@ -13,4 +13,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def send_sub_found_email
+    mg_api_key = ENV.fetch("mailgun_token")
+    mg_client = Mailgun::Client.new(mg_api_key)
+
+    message_params =  {
+      :from => "mailgun@mail.volleyballsub1.com",
+      :to => "erica.reetz@gmail.com",
+      :subject => "You have a sub!",
+      :text => "testing... testing..."
+    }
+
+    # Send your message through the client
+    mg_client.send_message("mail.volleyballsub1.com", message_params)
+
+  end
+
 end

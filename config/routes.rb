@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get("/new_sub_request", { :controller => "sub_requests", :action => "new_request_form" })
   
   get("/sub_requests/:path_id", { :controller => "sub_requests", :action => "show" })
-  post("/email_sender", { :controller => "sub_requests", :action => "email" })
+  get("/email_sender/:path_id", { :controller => "sub_requests", :action => "email" })
   
   # UPDATE
   post("/modify_sub_request/:path_id", { :controller => "sub_requests", :action => "update" })

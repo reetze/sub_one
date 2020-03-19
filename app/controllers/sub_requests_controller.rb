@@ -32,8 +32,8 @@ class SubRequestsController < ApplicationController
   end
 
   def email
-    the_sub_request = params.fetch("the_sub_req")
-    volunteer_id = params.fetch("path_id")
+    # sub_request_id = params.fetch("path_id")
+    # volunteer = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     mg_api_key = ENV.fetch("mailgun_token")
     mg_client = Mailgun::Client.new(mg_api_key)
@@ -50,7 +50,7 @@ class SubRequestsController < ApplicationController
     # Send your message through the client
     mg_client.send_message("mail.volleyballsub1.com", message_params)
 
-    redirect_to("/sub_requests", { :notice => "Email sent" })
+    redirect_to("/sub_requests", { :notice => "Email sent!" })
 
   end
 

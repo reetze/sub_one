@@ -1,1 +1,3 @@
 class SentEmailsController < ApplicationController
+
+end

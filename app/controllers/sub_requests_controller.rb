@@ -51,7 +51,17 @@ class SubRequestsController < ApplicationController
     # Send your message through the client
     mg_client.send_message("mail.volleyballsub1.com", message_params)
 
-    redirect_to("/sub_requests", { :notice => "Email sent!" })
+    
+    @sent_email = SentEmail.new
+    @sent_email.volunteer_id = volunteer.id
+    @sent_email.sub_request_id = sub_request_id
+
+    if @sent_email.valid?
+      @sent_email.save
+      redirect_to("/sub_requests", { :notice => "Email sent!" })
+    else
+      redirect_to("/sub_requests/#{the_sub_request.id}", { :alert => "Email failed to send successfully." })
+    end
 
   end
 

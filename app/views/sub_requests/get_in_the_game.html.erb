@@ -138,9 +138,19 @@
             <td><%= User.where({ :id => sub_request.sender_id}).at(0).first_and_last_init %></td>
             <td>
               <div class="col">
-                <a href="/sub_requests/<%= sub_request.id %>" class="btn btn-block btn-outline-secondary" style = "background-color: #4CAF50; color:white ">
-                  Play!
-                </a>
+                <%if SentEmail.where({ :volunteer_id => session.fetch(:user_id), :sub_request_id => sub_request.id })%>
+                  <div class="col">
+                    <a href="/sub_requests/<%= sub_request.id %>" class="btn btn-block btn-outline-secondary" style = "background-color: #1c1c66; color:white">
+                      Sent
+                    </a>
+                  </div>
+                <%else%>
+                  <div class="col">
+                    <a href="/sub_requests/<%= sub_request.id %>" class="btn btn-block btn-outline-secondary" style = "background-color: #4CAF50; color:white ">
+                      Play!
+                    </a>
+                  </div>
+                <%end%>
               </div>
             </td>
           </tr>

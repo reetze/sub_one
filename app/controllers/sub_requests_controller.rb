@@ -33,7 +33,8 @@ class SubRequestsController < ApplicationController
 
   def email
     sub_request_id = params.fetch("path_id")
-    requestor_id = SubRequest.where({ :id => sub_request_id }).at(0).sender_id
+    the_sub_request = SubRequest.where({ :id => sub_request_id }).at(0)
+    requestor_id = the_sub_request.sender_id
     volunteer = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     mg_api_key = ENV.fetch("mailgun_token")
@@ -42,8 +43,9 @@ class SubRequestsController < ApplicationController
     message_params =  {
       :from => "mailgun@mail.volleyballsub1.com",
       :to => User.where({ :id => requestor_id }).at(0).email,
-      :subject => volunteer.first_and_last_init.to_s + " can play on " + SubRequest.where({ :id => sub_request_id }).at(0).game_datetime.strftime("%a %-m/%-e"),
-      :text => "testing... testing..."
+      :cc => User.where({ :id => volunteer.id }).at(0).email,
+      :subject => "You found a sub! " + volunteer.first_and_last_init.to_s + " can play on " + the_sub_request.game_datetime.strftime("%a %-m/%-e"),
+      :text => volunteer.first_name.to_s + " can play on " + the_sub_request.game_datetime.strftime("%a %-m/%-e") + " for your " + the_sub_request.league_environment.to_s + " " + the_sub_request.league_format.to_s + " volleyball game. They are cc'ed on this email so that you can coordiante from here. If it all works out, don't forgot to update this sub request on VolleyballSub1.com. Go get em!"
     }
 
     # Send your message through the client

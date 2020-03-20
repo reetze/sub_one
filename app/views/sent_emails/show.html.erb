@@ -1,0 +1,86 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Sent email #<%= @sent_email.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/sent_emails" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_sent_email/<%= @sent_email.id %>" class="btn btn-block btn-outline-secondary">
+          Delete sent email
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Volunteer
+      </dt>
+      <dd>
+        <%= @sent_email.volunteer_id %>
+      </dd>
+
+      <dt>
+        Sub request
+      </dt>
+      <dd>
+        <%= @sent_email.sub_request_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@sent_email.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@sent_email.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit sent email
+    </h2>
+
+    <form action="/modify_sent_email/<%= @sent_email.id %>"  method="post" >
+      <div class="form-group">
+        <label for="volunteer_id_box">
+          Volunteer
+        </label>
+
+        <input type="text" id="volunteer_id_box" name="query_volunteer_id" class="form-control" value="<%= @sent_email.volunteer_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="sub_request_id_box">
+          Sub request
+        </label>
+
+        <input type="text" id="sub_request_id_box" name="query_sub_request_id" class="form-control" value="<%= @sent_email.sub_request_id %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update sent email
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

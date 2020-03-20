@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_13_145715) do
+ActiveRecord::Schema.define(version: 2020_03_20_002531) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -65,6 +65,13 @@ ActiveRecord::Schema.define(version: 2020_03_13_145715) do
     t.boolean "position_libero", default: false
     t.boolean "position_player", default: false
     t.string "coed_gender"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sent_emails", force: :cascade do |t|
+    t.integer "volunteer_id"
+    t.integer "sub_request_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

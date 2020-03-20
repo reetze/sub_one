@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  # Routes for the Sent email resource:
+
+  # CREATE
+  post("/insert_sent_email", { :controller => "sent_emails", :action => "create" })
+          
+
+  #------------------------------
+
   # Routes for the Playing profile resource:
 
   # CREATE

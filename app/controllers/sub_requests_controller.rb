@@ -33,7 +33,8 @@ class SubRequestsController < ApplicationController
 
   def email
     sub_request_id = params.fetch("path_id")
-    requestor_id = SubRequest.where({ :id => sub_request_id }).at(0).sender_id
+    the_sub_request = SubRequest.where({ :id => sub_request_id }).at(0)
+    requestor_id = the_sub_request.sender_id
     volunteer = User.where({ :id => session.fetch(:user_id)}).at(0)
 
     mg_api_key = ENV.fetch("mailgun_token")
@@ -42,14 +43,25 @@ class SubRequestsController < ApplicationController
     message_params =  {
       :from => "mailgun@mail.volleyballsub1.com",
       :to => User.where({ :id => requestor_id }).at(0).email,
-      :subject => volunteer.first_and_last_init.to_s + " can play on " + SubRequest.where({ :id => sub_request_id }).at(0).game_datetime.strftime("%a %-m/%-e"),
-      :text => "testing... testing..."
+      :cc => User.where({ :id => volunteer.id }).at(0).email,
+      :subject => "You found a sub! " + volunteer.first_and_last_init.to_s + " can play on " + the_sub_request.game_datetime.strftime("%a %-m/%-e"),
+      :html => "<html><h1>" + volunteer.first_name.to_s + " can play on " + the_sub_request.game_datetime.strftime("%a %-m/%-e") + " for your " + the_sub_request.league_environment.to_s + " " + the_sub_request.league_format.to_s + " volleyball game.</h1><h3>They are cc'd on this email so that you can coordinate from here. If it all works out, don't forgot to update this sub request on <a href=\"https://www.google.com/\">VolleyballSub1.com</a>.</h3><h3>Go get 'em!</h3></html>"
     }
 
     # Send your message through the client
     mg_client.send_message("mail.volleyballsub1.com", message_params)
 
-    redirect_to("/sub_requests", { :notice => "Email sent!" })
+    
+    @sent_email = SentEmail.new
+    @sent_email.volunteer_id = volunteer.id
+    @sent_email.sub_request_id = sub_request_id
+
+    if @sent_email.valid?
+      @sent_email.save
+      redirect_to("/sub_requests", { :notice => "Email sent!" })
+    else
+      redirect_to("/sub_requests/#{the_sub_request.id}", { :alert => "Email failed to send successfully." })
+    end
 
   end
 

@@ -45,7 +45,7 @@ class SubRequestsController < ApplicationController
       :to => User.where({ :id => requestor_id }).at(0).email,
       :cc => User.where({ :id => volunteer.id }).at(0).email,
       :subject => "You found a sub! " + volunteer.first_and_last_init.to_s + " can play on " + the_sub_request.game_datetime.strftime("%a %-m/%-e"),
-      :text => volunteer.first_name.to_s + " can play on " + the_sub_request.game_datetime.strftime("%a %-m/%-e") + " for your " + the_sub_request.league_environment.to_s + " " + the_sub_request.league_format.to_s + " volleyball game. They are cc'ed on this email so that you can coordiante from here. If it all works out, don't forgot to update this sub request on VolleyballSub1.com. Go get em!"
+      :html => "<html>" + volunteer.first_name.to_s + " can play on " + the_sub_request.game_datetime.strftime("%a %-m/%-e") + " for your " + the_sub_request.league_environment.to_s + " " + the_sub_request.league_format.to_s + " volleyball game. They are cc'ed on this email so that you can coordinate from here. If it all works out, don't forgot to update this sub request on <a href=\"https://www.google.com/\">VolleyballSub1.com</a>. Go get 'em!</html>"
     }
 
     # Send your message through the client

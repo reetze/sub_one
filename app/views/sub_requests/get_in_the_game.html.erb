@@ -1,5 +1,9 @@
 <h1>Find a game</h1>
-<p>Sub requests that match your playing profiles</p>
+<p>Sub requests that match your playing profiles
+  <%if PlayingProfile.where({ :user_id => session.fetch(:user_id) }).count == 0%>
+    - You need to <a href="/playing_profiles">add a playing profile</a> in order to find sub requests
+  <%end%>
+</p>
 
 <div class="row mb-3">
   <div class="col-md-12">
@@ -162,6 +166,8 @@
     </table>
   </div>
 </div>
+
+
 
 
 <h1 style ="color:gray;">All active sub requests</h1>
